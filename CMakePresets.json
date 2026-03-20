@@ -1,0 +1,19 @@
+{
+    "version": 7,
+    "configurePresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "binaryDir": "${sourceDir}/build",
+            "environment": {
+                "CC": "clang",
+                "CXX": "clang++"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "LIBYUNPA_BUILD_DOCS": true
+            },
+            "generator": "Ninja"
+        }
+    ]
+}
