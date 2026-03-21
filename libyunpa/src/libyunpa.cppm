@@ -7,6 +7,7 @@ export import :SceneManager;
 export import :TermManager;
 
 // Graphics partitions
+export import :Color;
 export import :Drawable;
 
 // System partitions
