@@ -4,6 +4,7 @@ export module libyunpa;
 export import :Core;
 export import :Scene;
 export import :SceneManager;
+export import :TermManager;
 
 // Graphics partitions
 export import :Drawable;
