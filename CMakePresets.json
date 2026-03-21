@@ -15,5 +15,12 @@
             },
             "generator": "Ninja"
         }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "configurePreset": "debug"
+        }
     ]
 }
