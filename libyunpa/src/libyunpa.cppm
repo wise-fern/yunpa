@@ -2,6 +2,7 @@ export module libyunpa;
 
 // Engine partitions
 export import :Scene;
+export import :SceneManager;
 
 // Graphics partitions
 export import :Drawable;

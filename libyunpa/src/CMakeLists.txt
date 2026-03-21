@@ -5,6 +5,7 @@ target_sources(
          FILES
          "libyunpa.cppm"
          "Engine/Scene.cppm"
+         "Engine/SceneManager.cppm"
          "Graphics/Drawable.cppm"
          "System/Time.cppm"
-  PRIVATE "Engine/Scene.cpp" "System/Time.cpp")
+  PRIVATE "Engine/Scene.cpp" "Engine/SceneManager.cpp" "System/Time.cpp")
