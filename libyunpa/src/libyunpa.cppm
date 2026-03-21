@@ -1,6 +1,7 @@
 export module libyunpa;
 
 // Engine partitions
+export import :Core;
 export import :Scene;
 export import :SceneManager;
 
