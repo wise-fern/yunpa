@@ -4,3 +4,4 @@ set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES
 project(yunpa)
 
 add_subdirectory("libyunpa")
+add_subdirectory("YoungPastry")

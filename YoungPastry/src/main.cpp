@@ -1,0 +1,3 @@
+import libyunpa;
+
+int main() {}
