@@ -2,9 +2,9 @@ module;
 #include <memory>
 export module libyunpa:Scene;
 import :Drawable;
+import :Time;
 
 namespace libyunpa {
-struct GameTime;
 export class Scene;
 export using ScenePtr = std::shared_ptr<Scene>;
 
