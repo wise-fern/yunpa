@@ -11,7 +11,7 @@
             },
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "LIBYUNPA_BUILD_DOCS": true
+                "BUILD_SHARED_LIBS": true
             },
             "generator": "Ninja"
         }
