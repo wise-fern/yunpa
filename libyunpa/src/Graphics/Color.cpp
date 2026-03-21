@@ -49,4 +49,28 @@ std::string Color::apply_foreground(std::string_view text) {
 std::string Color::apply_background(std::string_view text) {
   return std::format("{}", text);
 }
+
+void Color::red(unsigned char red) {
+  _red = red;
+}
+
+unsigned char Color::red() const {
+  return _red;
+}
+
+void Color::green(unsigned char green) {
+  _green = green;
+}
+
+unsigned char Color::green() const {
+  return _green;
+}
+
+void Color::blue(unsigned char blue) {
+  _blue = blue;
+}
+
+unsigned char Color::blue() const {
+  return _blue;
+}
 } // namespace libyunpa

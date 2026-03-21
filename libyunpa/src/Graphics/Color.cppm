@@ -21,5 +21,14 @@ public:
   Color(unsigned char red, unsigned char green, unsigned char blue);
   Color(Builtin color);
   std::string apply(std::string_view text, bool background = false);
+  void red(unsigned char red);
+  [[nodiscard]]
+  unsigned char red() const;
+  void green(unsigned char green);
+  [[nodiscard]]
+  unsigned char green() const;
+  void blue(unsigned char blue);
+  [[nodiscard]]
+  unsigned char blue() const;
 };
 } // namespace libyunpa
