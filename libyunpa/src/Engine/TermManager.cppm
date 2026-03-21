@@ -25,6 +25,7 @@ private:
   std::queue<Event> _eventQueue;
 
   void enqueue_event(Event event);
+  void event_loop();
 
 public:
   void start();
