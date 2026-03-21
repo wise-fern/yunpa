@@ -27,6 +27,6 @@ public:
 
   virtual void on_bury();
   virtual void on_reveal();
-  virtual void update(const GameTime &gameTime);
+  virtual void update(const GameTime &gameTime) = 0;
 };
 } // namespace libyunpa
