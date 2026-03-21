@@ -39,14 +39,17 @@ std::string Color::apply(std::string_view text, bool background) {
 }
 
 std::string Color::apply_values(std::string_view text) {
+  // TODO implement Color::apply_values
   return std::format("{}", text);
 }
 
 std::string Color::apply_foreground(std::string_view text) {
+  // TODO implement Color::apply_foreground
   return std::format("{}", text);
 }
 
 std::string Color::apply_background(std::string_view text) {
+  // TODO implement Color::apply_background
   return std::format("{}", text);
 }
 
