@@ -1,13 +1,14 @@
 module;
 #include <memory>
 export module libyunpa:Scene;
+import :Drawable;
 
 namespace libyunpa {
 struct GameTime;
 export class Scene;
 export using ScenePtr = std::shared_ptr<Scene>;
 
-export class Scene {
+export class Scene : public Drawable {
 private:
   ScenePtr _parent;
   bool _wantsExit{false};
