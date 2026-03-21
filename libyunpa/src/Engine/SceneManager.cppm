@@ -3,6 +3,7 @@ module;
 export module libyunpa:SceneManager;
 import :Drawable;
 import :Scene;
+import :Time;
 
 namespace libyunpa {
 export class SceneManager : public Drawable {
