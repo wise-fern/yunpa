@@ -9,4 +9,5 @@ export import :SceneManager;
 export import :Drawable;
 
 // System partitions
+export import :Events;
 export import :Time;
