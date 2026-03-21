@@ -1,7 +1,6 @@
 module;
 #include <utility>
 module libyunpa;
-import :Scene;
 
 namespace libyunpa {
 void Scene::request_exit() {

@@ -1,7 +1,6 @@
 module;
 #include <chrono>
 module libyunpa;
-import :Time;
 
 namespace libyunpa {
 void GameTime::reset() {
