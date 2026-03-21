@@ -63,4 +63,8 @@ void SceneManager::update(const GameTime &gameTime) {
   }
   _scenes.top()->update(gameTime);
 }
+
+bool SceneManager::empty() const {
+  return _scenes.empty();
+}
 } // namespace libyunpa

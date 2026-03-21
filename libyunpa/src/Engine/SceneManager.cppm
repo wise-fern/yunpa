@@ -20,5 +20,7 @@ public:
   void set_next_scene(ScenePtr scene);
   [[nodiscard]]
   ScenePtr get_current_scene() const;
+  [[nodiscard]]
+  bool empty() const;
 };
 } // namespace libyunpa
