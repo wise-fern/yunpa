@@ -6,10 +6,31 @@ module;
 #ifdef WIN32
 #include <conio.h>
 #else
-
+#include <sys/ioctl.h>
+#include <termios.h>
 #endif
 module libyunpa;
+#ifndef WIN32
+int _kbhit() {
+  static constexpr auto STDIN{0};
+  static bool initialized{false};
 
+  if (not initialized) {
+    termios term{};
+    tcgetattr(STDIN, &term);
+    term.c_cflag and_eq static_cast<tcflag_t>(compl ICANON);
+    tcsetattr(STDIN, TCSANOW, &term);
+    // NOLINTNEXTLINE(bugprone-unsafe-functions)
+    setbuf(stdin, nullptr);
+    initialized = true;
+  }
+
+  auto bytesWaiting{0};
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+  ioctl(STDIN, FIONREAD, &bytesWaiting);
+  return bytesWaiting;
+}
+#endif
 namespace libyunpa {
 void TermManager::DECSET(Modes mode) {
   std::cout << std::format("\x1b[?{}h", static_cast<int>(mode));
