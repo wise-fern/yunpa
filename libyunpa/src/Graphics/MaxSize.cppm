@@ -1,11 +1,11 @@
 module;
 
 export module libyunpa:MaxSize;
-import :Drawable;
+import :Element;
 import :Point2;
 
 namespace libyunpa {
-export class MaxSize : public virtual Drawable {
+export class MaxSize : public virtual Element {
 public:
   struct Options {
     Point2u maxSize;

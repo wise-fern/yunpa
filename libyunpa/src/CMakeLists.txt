@@ -12,6 +12,7 @@ target_sources(
          "Graphics/Color.cppm"
          "Graphics/Colorable.cppm"
          "Graphics/Drawable.cppm"
+         "Graphics/Element.cppm"
          "Graphics/MaxSize.cppm"
          "Graphics/MinSize.cppm"
          "Graphics/Positionable.cppm"

@@ -1,11 +1,11 @@
 module;
 
 export module libyunpa:MinSize;
-import :Drawable;
+import :Element;
 import :Point2;
 
 namespace libyunpa {
-export class MinSize : public virtual Drawable {
+export class MinSize : public virtual Element {
 public:
   struct Options {
     Point2u minSize;

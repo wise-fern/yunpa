@@ -2,11 +2,11 @@ module;
 #include <format>
 #include <string_view>
 export module libyunpa:Positionable;
-import :Drawable;
+import :Element;
 import :Point2;
 
 namespace libyunpa {
-export class Positionable : public virtual Drawable {
+export class Positionable : public virtual Element {
 public:
   struct Options {
     Point2u position;
