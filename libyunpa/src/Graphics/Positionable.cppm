@@ -9,8 +9,8 @@ private:
   Point2u _position;
 
 public:
-  Positionable(Point2u position);
-  ~Positionable() = default;
+  Positionable(Point2u position = {1, 1});
+  virtual ~Positionable() = 0;
 
   void position(Point2u position);
   [[nodiscard]]

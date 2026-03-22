@@ -12,4 +12,6 @@ void Positionable::position(Point2u position) {
 Point2u Positionable::position() const {
   return _position;
 }
+
+Positionable::~Positionable() = default;
 } // namespace libyunpa
