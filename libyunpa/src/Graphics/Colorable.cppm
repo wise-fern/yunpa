@@ -1,5 +1,4 @@
 module;
-#include <format>
 #include <string_view>
 export module libyunpa:Colorable;
 import :Drawable;
@@ -19,8 +18,7 @@ private:
 
 protected:
   auto apply(std::string_view text) {
-    // TODO implement apply
-    return std::format("{}", text);
+    return _color.apply(_bgColor.apply(text, true));
   }
 
 public:
