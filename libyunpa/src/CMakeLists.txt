@@ -11,6 +11,7 @@ target_sources(
          "Graphics/Color.cppm"
          "Graphics/Colorable.cppm"
          "Graphics/Drawable.cppm"
+         "Graphics/Positionable.cppm"
          "System/Events.cppm"
          "System/Point2.cppm"
          "System/Time.cppm"
@@ -20,4 +21,6 @@ target_sources(
           "Engine/TermManager.cpp"
           "Graphics/Color.cpp"
           "Graphics/Colorable.cpp"
+          "Graphics/Drawable.cpp"
+          "Graphics/Positionable.cpp"
           "System/Time.cpp")
