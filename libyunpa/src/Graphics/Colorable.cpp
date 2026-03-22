@@ -6,6 +6,9 @@ namespace libyunpa {
 Colorable::Colorable(Color color, Color bgColor)
     : _color(color), _bgColor(bgColor) {}
 
+Colorable::Colorable(const Options &options)
+    : Colorable(options.color, options.bgColor) {}
+
 void Colorable::color(Color color) {
   _color = color;
 }
