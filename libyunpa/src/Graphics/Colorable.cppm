@@ -5,7 +5,7 @@ import :Drawable;
 import :Color;
 
 namespace libyunpa {
-export class Colorable : public Drawable {
+export class Colorable : public virtual Drawable {
 public:
   struct Options {
     Color color{Color::WHITE};

@@ -5,7 +5,7 @@ import :MaxSize;
 import :MinSize;
 
 namespace libyunpa {
-export class Sizable : public MinSize, public MaxSize {
+export class Sizable : public virtual MinSize, public virtual MaxSize {
 public:
   struct Options : public MinSize::Options, public MaxSize::Options {};
 

@@ -5,7 +5,7 @@ import :Drawable;
 import :Point2;
 
 namespace libyunpa {
-export class MinSize : public Drawable {
+export class MinSize : public virtual Drawable {
 public:
   struct Options {
     Point2u minSize;

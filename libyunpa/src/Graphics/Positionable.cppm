@@ -5,7 +5,7 @@ import :Drawable;
 import :Point2;
 
 namespace libyunpa {
-export class Positionable : public Drawable {
+export class Positionable : public virtual Drawable {
 public:
   struct Options {
     Point2u position;

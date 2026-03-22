@@ -5,7 +5,7 @@ import :Drawable;
 import :Point2;
 
 namespace libyunpa {
-export class MaxSize : public Drawable {
+export class MaxSize : public virtual Drawable {
 public:
   struct Options {
     Point2u maxSize;
