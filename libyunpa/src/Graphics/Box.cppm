@@ -23,7 +23,8 @@ private:
 
 public:
   Box(const Options &options)
-      : Colorable(options), Positionable(options), Sizable(options) {}
+      : MinSize(options), MaxSize(options), Colorable(options),
+        Positionable(options) {}
 
   auto header(std::string_view header) {
     _header = header;
