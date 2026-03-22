@@ -28,8 +28,21 @@ private:
   }
 
 public:
-  Color(unsigned char red, unsigned char green, unsigned char blue);
-  Color(Builtin color);
+  Color(unsigned char red, unsigned char green, unsigned char blue)
+      : _red(red), _green(green), _blue(blue) {}
+
+  Color(Builtin color) : Color(0, 0, 0) {
+    switch (color) {
+    case Color::WHITE:
+      _red = 255;
+      _green = 255;
+      _blue = 255;
+      return;
+    case Color::BLACK:
+    default:
+      break;
+    }
+  }
 
   auto apply(std::string_view text, bool background = false) {
     auto result{apply_values(text)};
