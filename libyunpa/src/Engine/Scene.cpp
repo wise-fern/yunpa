@@ -7,7 +7,7 @@ void Scene::request_exit() {
   _wantsExit = true;
 }
 
-Scene::Scene(ScenePtr parent) : _parent(std::move(parent)) {}
+Scene::Scene(ScenePtr parent) : Drawable({}), _parent(std::move(parent)) {}
 
 ScenePtr Scene::parent() const {
   return _parent;

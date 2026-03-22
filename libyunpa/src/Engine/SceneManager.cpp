@@ -3,6 +3,8 @@ module;
 module libyunpa;
 
 namespace libyunpa {
+SceneManager::SceneManager() : Drawable({}) {}
+
 void SceneManager::draw(ScenePtr scene) const {
   if (scene == nullptr) {
     return;

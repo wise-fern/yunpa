@@ -19,6 +19,7 @@ protected:
   void calculate_output() override;
 
 public:
+  SceneManager();
   void update(const GameTime &gameTime);
   void draw() const override;
   void set_next_scene(ScenePtr scene);

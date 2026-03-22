@@ -4,6 +4,11 @@ module;
 module libyunpa;
 
 namespace libyunpa {
+Drawable::Drawable(const Options &options)
+    : _position(options.position), _color(options.color),
+      _bgColor(options.bgColor), _minSize(options.minSize),
+      _maxSize(options.maxSize) {}
+
 Drawable::~Drawable() = default;
 
 void Drawable::draw() const {

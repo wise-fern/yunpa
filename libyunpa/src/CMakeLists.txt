@@ -8,6 +8,7 @@ target_sources(
          "Engine/Scene.cppm"
          "Engine/SceneManager.cppm"
          "Engine/TermManager.cppm"
+         "Graphics/Box.cppm"
          "Graphics/Color.cppm"
          "Graphics/Drawable.cppm"
          "System/Events.cppm"
@@ -17,6 +18,7 @@ target_sources(
           "Engine/Scene.cpp"
           "Engine/SceneManager.cpp"
           "Engine/TermManager.cpp"
+          "Graphics/Box.cpp"
           "Graphics/Color.cpp"
           "Graphics/Drawable.cpp"
           "System/Time.cpp")
