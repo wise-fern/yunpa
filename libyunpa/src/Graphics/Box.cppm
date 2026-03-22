@@ -8,7 +8,7 @@ import :Positionable;
 import :Sizable;
 
 namespace libyunpa {
-class Box : public Colorable, public Positionable, public Sizable {
+export class Box : public Colorable, public Positionable, public Sizable {
 public:
   struct Options : public Colorable::Options,
                    public Positionable::Options,
@@ -19,6 +19,9 @@ public:
 private:
   std::string _header;
   std::vector<DrawablePtr> _children;
+
+protected:
+  void calculate_output() override {}
 
 public:
   Box(const Options &options)
