@@ -21,6 +21,8 @@ private:
   std::string _header;
   std::vector<DrawablePtr> _children;
 
+  void calculate_output() override {}
+
 public:
   Box(const Options &options)
       : MinSize(options), MaxSize(options), Colorable(options),
