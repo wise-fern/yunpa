@@ -9,7 +9,12 @@ export import :TermManager;
 // Graphics partitions
 export import :Box;
 export import :Color;
+export import :Colorable;
 export import :Drawable;
+export import :MaxSize;
+export import :MinSize;
+export import :Positionable;
+export import :Sizable;
 
 // System partitions
 export import :Events;
