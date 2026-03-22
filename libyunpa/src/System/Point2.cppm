@@ -11,6 +11,6 @@ struct Point2 {
   T y;
 };
 
-export using Piont2u = Point2<unsigned int>;
+export using Point2u = Point2<unsigned int>;
 export using Point2i = Point2<int>;
 } // namespace libyunpa
