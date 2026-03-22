@@ -42,9 +42,6 @@ private:
     _nextScene = nullptr;
   }
 
-protected:
-  void calculate_output() override {}
-
 public:
   SceneManager() = default;
 

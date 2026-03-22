@@ -18,8 +18,6 @@ protected:
     _wantsExit = true;
   }
 
-  void calculate_output() override {}
-
 public:
   Scene(ScenePtr parent = nullptr) : _parent(std::move(parent)) {}
 

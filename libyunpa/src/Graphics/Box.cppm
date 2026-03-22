@@ -1,5 +1,4 @@
 module;
-#include <iostream>
 #include <string>
 #include <vector>
 export module libyunpa:Box;
@@ -21,8 +20,6 @@ private:
   std::string _header;
   std::vector<DrawablePtr> _children;
 
-  void calculate_output() override {}
-
 public:
   Box(const Options &options)
       : MinSize(options), MaxSize(options), Colorable(options),
@@ -41,7 +38,6 @@ public:
     for (const auto &child : _children) {
       child->draw();
     }
-    std::cout << output();
   }
 };
 } // namespace libyunpa
