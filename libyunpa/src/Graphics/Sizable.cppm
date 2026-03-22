@@ -11,7 +11,7 @@ public:
 
 private:
 public:
-  Sizable(const Options &options) : MinSize(options), MaxSize(options) {}
+  Sizable() = default;
 
   virtual ~Sizable() = 0;
 };
