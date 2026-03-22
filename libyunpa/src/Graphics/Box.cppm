@@ -38,6 +38,7 @@ public:
     for (const auto &child : _children) {
       child->draw();
     }
+    Node::draw();
   }
 };
 } // namespace libyunpa
