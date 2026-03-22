@@ -1,0 +1,15 @@
+module;
+
+module libyunpa;
+
+namespace libyunpa {
+Positionable::Positionable(Point2u position) : _position(position) {}
+
+void Positionable::position(Point2u position) {
+  _position = position;
+}
+
+Point2u Positionable::position() const {
+  return _position;
+}
+} // namespace libyunpa

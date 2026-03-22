@@ -10,6 +10,7 @@ export import :TermManager;
 export import :Color;
 export import :Colorable;
 export import :Drawable;
+export import :Positionable;
 
 // System partitions
 export import :Events;
