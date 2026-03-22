@@ -11,6 +11,7 @@ Colorable::Colorable(const Options &options)
 
 void Colorable::color(Color color) {
   _color = color;
+  calculate_output();
 }
 
 Color Colorable::color() const {
@@ -19,6 +20,7 @@ Color Colorable::color() const {
 
 void Colorable::bgColor(Color color) {
   _bgColor = color;
+  calculate_output();
 }
 
 Color Colorable::bgColor() const {

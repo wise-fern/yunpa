@@ -10,6 +10,7 @@ Positionable::Positionable(const Options &options)
 
 void Positionable::position(Point2u position) {
   _position = position;
+  calculate_output();
 }
 
 Point2u Positionable::position() const {

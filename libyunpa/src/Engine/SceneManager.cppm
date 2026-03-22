@@ -15,6 +15,9 @@ private:
   void pop_scene();
   void transition_scene();
 
+protected:
+  void calculate_output() override;
+
 public:
   void update(const GameTime &gameTime);
   void draw() const override;

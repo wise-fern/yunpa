@@ -1,10 +1,11 @@
 module;
 
 export module libyunpa:Colorable;
+import :Drawable;
 import :Color;
 
 namespace libyunpa {
-export class Colorable {
+export class Colorable : public Drawable {
 public:
   struct Options {
     Color color{Color::WHITE};

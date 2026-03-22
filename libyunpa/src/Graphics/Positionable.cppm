@@ -1,10 +1,11 @@
 module;
 
 export module libyunpa:Positionable;
+import :Drawable;
 import :Point2;
 
 namespace libyunpa {
-export class Positionable {
+export class Positionable : public Drawable {
 public:
   struct Options {
     Point2u position;

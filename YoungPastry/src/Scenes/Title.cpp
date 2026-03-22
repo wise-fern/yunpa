@@ -7,5 +7,5 @@ void Title::update(const libyunpa::GameTime &gameTime) {
   request_exit();
 }
 
-void Title::draw() const {}
+void Title::calculate_output() {}
 } // namespace YoungPastry::Scenes

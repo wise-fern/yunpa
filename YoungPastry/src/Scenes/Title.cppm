@@ -8,6 +8,6 @@ export class Title : public libyunpa::Scene {
 private:
 public:
   void update(const libyunpa::GameTime &gameTime) override;
-  void draw() const override;
+  void calculate_output() override;
 };
 } // namespace YoungPastry::Scenes
