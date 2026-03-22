@@ -1,5 +1,7 @@
 module;
+#include <iostream>
 #include <string>
+#include <vector>
 export module libyunpa:Box;
 import :Colorable;
 import :Positionable;
@@ -16,12 +18,26 @@ public:
 
 private:
   std::string _header;
+  std::vector<DrawablePtr> _children;
 
 public:
-  Box(const Options &options);
+  Box(const Options &options)
+      : Colorable(options), Positionable(options), Sizable(options) {}
 
-  void header(std::string_view header);
+  auto header(std::string_view header) {
+    _header = header;
+  }
+
   [[nodiscard]]
-  std::string_view header() const;
+  auto header() const {
+    return std::string_view{_header};
+  }
+
+  void draw() const override {
+    for (const auto &child : _children) {
+      child->draw();
+    }
+    std::cout << output();
+  }
 };
 } // namespace libyunpa

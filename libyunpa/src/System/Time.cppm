@@ -14,11 +14,27 @@ private:
   TimePoint _frameStart{TimePoint::clock::now()};
 
 public:
-  void update();
-  void reset();
+  auto update() {
+    auto now{TimePoint::clock::now()};
+    _lastFrame = now - _frameStart;
+    _totalTime += _lastFrame;
+    _frameStart = now;
+  }
+
+  auto reset() {
+    _lastFrame = Duration::zero();
+    _totalTime = Duration::zero();
+    _frameStart = TimePoint::clock::now();
+  }
+
   [[nodiscard]]
-  Duration last_frame() const;
+  auto last_frame() const {
+    return _lastFrame;
+  }
+
   [[nodiscard]]
-  Duration total_time() const;
+  auto total_time() const {
+    return _totalTime;
+  }
 };
 } // namespace libyunpa

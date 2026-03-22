@@ -14,19 +14,31 @@ private:
   bool _wantsExit{false};
 
 protected:
-  void request_exit();
+  auto request_exit() {
+    _wantsExit = true;
+  }
+
+  void calculate_output() override {}
 
 public:
-  Scene(ScenePtr parent = nullptr);
+  Scene(ScenePtr parent = nullptr) : _parent(std::move(parent)) {}
+
   virtual ~Scene() = default;
 
   [[nodiscard]]
-  ScenePtr parent() const;
-  [[nodiscard]]
-  bool wants_exit() const;
+  auto parent() const {
+    return _parent;
+  }
 
-  virtual void on_bury();
-  virtual void on_reveal();
+  [[nodiscard]]
+  auto wants_exit() const {
+    return _wantsExit;
+  }
+
+  virtual void on_bury() {}
+
+  virtual void on_reveal() {}
+
   virtual void update(const GameTime &gameTime) = 0;
 };
 } // namespace libyunpa

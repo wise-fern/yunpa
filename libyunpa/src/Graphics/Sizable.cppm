@@ -11,7 +11,10 @@ public:
 
 private:
 public:
-  Sizable(const Options &options);
+  Sizable(const Options &options) : MinSize(options), MaxSize(options) {}
+
   virtual ~Sizable() = 0;
 };
+
+Sizable::~Sizable() = default;
 } // namespace libyunpa

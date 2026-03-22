@@ -1,5 +1,6 @@
 module;
-
+#include <format>
+#include <string_view>
 export module libyunpa:Positionable;
 import :Drawable;
 import :Point2;
@@ -14,13 +15,27 @@ public:
 private:
   Point2u _position;
 
+protected:
+  auto apply(std::string_view text) {
+    return std::format("{}", text);
+  }
+
 public:
-  Positionable(Point2u position = {1, 1});
-  Positionable(const Options &options);
+  Positionable(Point2u position = {1, 1}) : _position(position) {}
+
+  Positionable(const Options &options) : _position(options.position) {}
+
   virtual ~Positionable() = 0;
 
-  void position(Point2u position);
+  auto position(Point2u position) {
+    _position = position;
+  }
+
   [[nodiscard]]
-  Point2u position() const;
+  auto position() const {
+    return _position;
+  }
 };
+
+Positionable::~Positionable() = default;
 } // namespace libyunpa

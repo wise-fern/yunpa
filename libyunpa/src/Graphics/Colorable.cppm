@@ -1,5 +1,6 @@
 module;
-
+#include <format>
+#include <string_view>
 export module libyunpa:Colorable;
 import :Drawable;
 import :Color;
@@ -16,16 +17,39 @@ private:
   Color _color;
   Color _bgColor;
 
+protected:
+  auto apply(std::string_view text) {
+    // TODO implement apply
+    return std::format("{}", text);
+  }
+
 public:
-  Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK);
-  Colorable(const Options &options);
+  Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK)
+      : _color(color), _bgColor(bgColor) {}
+
+  Colorable(const Options &options)
+      : Colorable(options.color, options.bgColor) {}
+
   virtual ~Colorable() = 0;
 
-  void color(Color color);
+  auto color(Color color) {
+    _color = color;
+  }
+
   [[nodiscard]]
-  Color color() const;
-  void bgColor(Color color);
+  auto color() const {
+    return _color;
+  }
+
+  auto bgColor(Color color) {
+    _bgColor = color;
+  }
+
   [[nodiscard]]
-  Color bgColor() const;
+  auto bgColor() const {
+    return _bgColor;
+  }
 };
+
+Colorable::~Colorable() = default;
 } // namespace libyunpa

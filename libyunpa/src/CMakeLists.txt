@@ -19,14 +19,4 @@ target_sources(
          "System/Events.cppm"
          "System/Point2.cppm"
          "System/Time.cppm"
-  PRIVATE "Engine/Core.cpp"
-          "Engine/Scene.cpp"
-          "Engine/SceneManager.cpp"
-          "Engine/TermManager.cpp"
-          "Graphics/Box.cpp"
-          "Graphics/Color.cpp"
-          "Graphics/Colorable.cpp"
-          "Graphics/Drawable.cpp"
-          "Graphics/Positionable.cpp"
-          "Graphics/Sizable.cpp"
-          "System/Time.cpp")
+  PRIVATE "Engine/Core.cpp")
