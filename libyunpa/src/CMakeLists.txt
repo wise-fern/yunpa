@@ -12,6 +12,7 @@ target_sources(
          "Graphics/Colorable.cppm"
          "Graphics/Drawable.cppm"
          "System/Events.cppm"
+         "System/Point2.cppm"
          "System/Time.cppm"
   PRIVATE "Engine/Core.cpp"
           "Engine/Scene.cpp"
