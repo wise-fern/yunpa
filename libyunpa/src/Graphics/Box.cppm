@@ -4,6 +4,7 @@ module;
 #include <vector>
 export module libyunpa:Box;
 import :Colorable;
+import :Drawable;
 import :Positionable;
 import :Sizable;
 
