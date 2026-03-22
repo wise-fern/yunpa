@@ -1,27 +1,27 @@
 module;
 #include <string>
-#include <string_view>
 export module libyunpa:Box;
-import :Drawable;
+import :Colorable;
+import :Positionable;
+import :Sizable;
 
 namespace libyunpa {
-export class Box : public Drawable {
+class Box : public Colorable, public Positionable, public Sizable {
 public:
-  struct Options : public Drawable::Options {
+  struct Options : public Colorable::Options,
+                   public Positionable::Options,
+                   public Sizable::Options {
     std::string header;
   };
 
 private:
   std::string _header;
 
-protected:
-  void calculate_output() override;
-
 public:
   Box(const Options &options);
-  ~Box() = default;
+
   void header(std::string_view header);
-  std::string header() const;
-  void draw() const override;
+  [[nodiscard]]
+  std::string_view header() const;
 };
 } // namespace libyunpa
