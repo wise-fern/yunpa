@@ -12,15 +12,24 @@ public:
   };
 
 private:
-  Point2u _maxSize;
+  Point2u _size;
 
 public:
-  MaxSize(Point2u max);
-  MaxSize(const Options &options);
+  MaxSize(Point2u max) : _size(max) {}
+
+  MaxSize(const Options &options) : _size(options.maxSize) {}
+
   virtual ~MaxSize() = 0;
 
-  void max_size(Point2u size);
+  auto max_size(Point2u size) {
+    _size = size;
+  }
+
   [[nodiscard]]
-  Point2u max_size() const;
+  auto max_size() const {
+    return _size;
+  }
 };
+
+MaxSize::~MaxSize() = default;
 } // namespace libyunpa

@@ -12,15 +12,23 @@ public:
   };
 
 private:
-  Point2u _minSize;
+  Point2u _size;
 
 public:
-  MinSize(Point2u max);
-  MinSize(const Options &options);
+  MinSize(Point2u min) : _size(min) {}
+
+  MinSize(const Options &options) : _size(options.minSize) {};
   virtual ~MinSize() = 0;
 
-  void min_size(Point2u size);
+  auto min_size(Point2u size) {
+    _size = size;
+  }
+
   [[nodiscard]]
-  Point2u min_size() const;
+  auto min_size() const {
+    return _size;
+  }
 };
+
+MinSize::~MinSize() = default;
 } // namespace libyunpa
