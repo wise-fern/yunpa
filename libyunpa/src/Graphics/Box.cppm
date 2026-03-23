@@ -21,27 +21,13 @@ private:
   std::vector<DrawablePtr> _children;
 
 protected:
-  void calculate_output() override {}
+  void calculate_output() override;
 
 public:
-  Box(const Options &options)
-      : MinSize(options), MaxSize(options), Colorable(options),
-        Positionable(options) {}
-
-  auto header(std::string_view header) {
-    _header = header;
-  }
-
+  Box(const Options &options);
+  void header(std::string_view header);
   [[nodiscard]]
-  auto header() const {
-    return std::string_view{_header};
-  }
-
-  void draw() const override {
-    for (const auto &child : _children) {
-      child->draw();
-    }
-    Node::draw();
-  }
+  std::string_view header() const;
+  void draw() const override;
 };
 } // namespace libyunpa

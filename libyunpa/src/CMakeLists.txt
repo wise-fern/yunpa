@@ -21,6 +21,7 @@ target_sources(
          "System/Point2.cppm"
          "System/Time.cppm"
   PRIVATE "Engine/Core.cpp"
+          "Graphics/Box.cpp"
           "Graphics/Color.cpp"
           "Graphics/Colorable.cpp"
           "Graphics/Element.cpp"
