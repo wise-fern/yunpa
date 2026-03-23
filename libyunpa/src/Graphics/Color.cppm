@@ -1,4 +1,5 @@
 module;
+#include <string> // IWYU pragma: keep
 #include <string_view>
 export module libyunpa:Color;
 
