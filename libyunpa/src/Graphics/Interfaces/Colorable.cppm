@@ -1,18 +1,24 @@
 module;
 #include <string>
 export module libyunpa:Colorable;
-import :Drawable;
+import :Element;
 import :Color;
 
 namespace libyunpa {
-export class IColorable : public virtual Drawable {
+export class Colorable : public virtual Node {
 private:
   Color _color;
   Color _bgColor;
 
 public:
-  IColorable(Color color = Color::WHITE, Color bgColor = Color::BLACK);
-  virtual ~IColorable() = 0;
+  Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK);
+  virtual ~Colorable() = 0;
   std::string apply(std::string_view text);
+  void color(Color color);
+  [[nodiscard]]
+  Color color() const;
+  void bg_color(Color color);
+  [[nodiscard]]
+  Color bg_color() const;
 };
 } // namespace libyunpa
