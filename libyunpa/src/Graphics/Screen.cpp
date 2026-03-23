@@ -5,6 +5,7 @@ module;
 #include <sys/ioctl.h>
 #include <unistd.h>
 #endif
+#include <iostream>
 #include <stdexcept>
 module libyunpa;
 import :Screen;
@@ -20,6 +21,12 @@ Point2u Screen::size() const {
 
 void Screen::update() {
   update_size();
+}
+
+void Screen::draw() const {
+  for (const auto &iter : _iters) {
+    std::cout << iter;
+  }
 }
 
 void Screen::update_size() {
