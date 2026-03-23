@@ -11,6 +11,7 @@ export import :Color;
 export import :Colorable;
 export import :Drawable;
 export import :Element;
+export import :Text;
 
 // System partitions
 export import :Events;
