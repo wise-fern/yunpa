@@ -68,6 +68,9 @@ Color::Color(Builtin name) : Color(0, 0, 0) {
   case GRAY:
     _red = _green = _blue = 0x80;
     break;
+  case MAROON:
+    _red = 0x80;
+    break;
   case BLACK:
   default:
     break;

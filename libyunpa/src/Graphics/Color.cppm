@@ -16,6 +16,7 @@ public:
     GREY = GRAY,
     GREEN,
     LIME,
+    MAROON,
     NAVY,
     RED,
     SILVER,
