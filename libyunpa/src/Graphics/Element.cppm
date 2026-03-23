@@ -16,6 +16,7 @@ protected:
   void size(Point2u size);
   void height(unsigned int height);
   void width(unsigned int width);
+  virtual void update() = 0;
 
 public:
   void draw() const override final;
