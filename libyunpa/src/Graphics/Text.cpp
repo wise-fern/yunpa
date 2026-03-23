@@ -5,7 +5,8 @@ import :Text;
 
 namespace libyunpa {
 Text::Text(const Options &options)
-    : Colorable(options), Positionable(options), _text(options.text) {
+    : Colorable(options), Positionable(options), Formattable(options),
+      _text(options.text) {
   update();
 }
 
@@ -18,6 +19,6 @@ void Text::text(std::string_view text) {
 }
 
 void Text::update() {
-  output(Positionable::apply(Colorable::apply(_text)));
+  output(Positionable::apply(Formattable::apply(Colorable::apply(_text))));
 }
 } // namespace libyunpa

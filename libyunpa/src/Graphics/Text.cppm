@@ -2,12 +2,15 @@ module;
 #include <string>
 export module libyunpa:Text;
 import :Colorable;
+import :Formattable;
 import :Positionable;
 
 namespace libyunpa {
-export class Text : public Colorable, public Positionable {
+export class Text : public Colorable, public Positionable, public Formattable {
 public:
-  struct Options : public Colorable::Options, public Positionable::Options {
+  struct Options : public Colorable::Options,
+                   public Positionable::Options,
+                   public Formattable::Options {
     std::string text;
   };
 
