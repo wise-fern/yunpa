@@ -26,8 +26,10 @@ void Screen::update_size() {
 #ifdef WIN32
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) {
-    _size = {csbi.srWindow.Right - csbi.srWindow.Left + 1,
-             csbi.srWindow.Bottom - csbi.srWindow.Top + 1};
+    _size = {
+        static_cast<unsigned int>(csbi.srWindow.Right - csbi.srWindow.Left + 1),
+        static_cast<unsigned int>(csbi.srWindow.Bottom - csbi.srWindow.Top +
+                                  1)};
   }
 #else
   winsize w{};
