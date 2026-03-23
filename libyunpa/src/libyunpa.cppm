@@ -8,6 +8,7 @@ export import :TermManager;
 
 // Graphics partitions
 export import :Drawable;
+export import :Element;
 
 // System partitions
 export import :Events;
