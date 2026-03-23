@@ -12,7 +12,6 @@ public:
 private:
 public:
   Sizable() = default;
-
   virtual ~Sizable() = 0;
 };
 
