@@ -18,7 +18,9 @@ public:
 
 private:
   std::string _header;
-  std::vector<DrawablePtr> _children;
+  std::vector<Element> _children;
+
+  void calculate_dimensions();
 
 protected:
   void calculate_output() override;
