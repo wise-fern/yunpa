@@ -3,13 +3,13 @@ module;
 export module libyunpa:Drawable;
 
 namespace libyunpa {
-export class Drawable {
+export class IDrawable {
 public:
-  Drawable() = default;
-  virtual ~Drawable() = default;
+  IDrawable() = default;
+  virtual ~IDrawable() = default;
 
   virtual void draw() const = 0;
 };
 
-export using DrawablePtr = std::shared_ptr<Drawable>;
+export using Drawable = std::shared_ptr<IDrawable>;
 } // namespace libyunpa

@@ -8,7 +8,7 @@ namespace libyunpa {
 export class Scene;
 export using ScenePtr = std::shared_ptr<Scene>;
 
-export class Scene : public Drawable {
+export class Scene : public IDrawable {
 private:
   ScenePtr _parent;
   bool _wantsExit{false};

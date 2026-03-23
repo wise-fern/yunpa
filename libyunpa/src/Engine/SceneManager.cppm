@@ -7,7 +7,7 @@ import :Scene;
 import :Time;
 
 namespace libyunpa {
-export class SceneManager : public Drawable {
+export class SceneManager : public IDrawable {
 private:
   ScenePtr _nextScene;
   std::stack<ScenePtr> _scenes;
