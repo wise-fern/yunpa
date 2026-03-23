@@ -1,5 +1,7 @@
 module;
 #include <memory>
+#include <string>
+#include <string_view>
 export module libyunpa:Element;
 import :Drawable;
 
