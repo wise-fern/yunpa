@@ -6,12 +6,19 @@ import :Color;
 
 namespace libyunpa {
 export class Colorable : public virtual Node {
+public:
+  struct Options {
+    Color color;
+    Color bgColor;
+  };
+
 private:
   Color _color;
   Color _bgColor;
 
 public:
   Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK);
+  Colorable(const Options &options);
   virtual ~Colorable() = 0;
   std::string apply(std::string_view text);
   void color(Color color);
