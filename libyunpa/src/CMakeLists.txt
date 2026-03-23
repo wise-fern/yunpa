@@ -8,6 +8,7 @@ target_sources(
          "Engine/Scene.cppm"
          "Engine/SceneManager.cppm"
          "Engine/TermManager.cppm"
+         "Graphics/Color.cppm"
          "Graphics/Drawable.cppm"
          "Graphics/Element.cppm"
          "System/Events.cppm"
@@ -15,4 +16,4 @@ target_sources(
          "System/Time.cppm"
          "System/Unicode.cppm"
   PRIVATE "Engine/Core.cpp" "Engine/Scene.cpp" "Engine/SceneManager.cpp"
-          "Graphics/Element.cpp")
+          "Graphics/Color.cpp" "Graphics/Element.cpp")
