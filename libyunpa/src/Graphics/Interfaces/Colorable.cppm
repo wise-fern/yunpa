@@ -8,8 +8,8 @@ namespace libyunpa {
 export class Colorable : public virtual Node {
 public:
   struct Options {
-    Color color;
-    Color bgColor;
+    Color color{Color::WHITE};
+    Color bgColor{Color::BLACK};
   };
 
 private:
