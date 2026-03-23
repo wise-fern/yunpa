@@ -11,6 +11,7 @@ export import :Color;
 export import :Colorable;
 export import :Drawable;
 export import :Element;
+export import :Positionable;
 export import :Text;
 
 // System partitions
