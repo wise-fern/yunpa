@@ -10,5 +10,6 @@ if(CCACHE_EXECUTABLE)
 endif()
 find_program(CPPCHECK_EXECUTABLE cppcheck)
 if(CPPCHECK_EXECUTABLE)
-  # set(CMAKE_CXX_CPPCHECK ${CPPCHECK_EXECUTABLE} --std=c++20 --error-exitcode=2 --language=c++ --inline-suppr)
+  set(CMAKE_CXX_CPPCHECK ${CPPCHECK_EXECUTABLE} --std=c++20 --error-exitcode=2
+                         --language=c++ --inline-suppr)
 endif()
