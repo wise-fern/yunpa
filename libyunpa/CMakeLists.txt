@@ -5,7 +5,11 @@ project(
   DESCRIPTION "A library to help gamers game."
   LANGUAGES CXX)
 
-add_library(${PROJECT_NAME})
+if(EMSCRIPTEN)
+  add_library(${PROJECT_NAME} STATIC)
+else()
+  add_library(${PROJECT_NAME})
+endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" FOLDER
                                                            ${PROJECT_NAME})
 if(NOT MSVC)
