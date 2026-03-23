@@ -1,4 +1,5 @@
 module;
+#include <string>
 #include <string_view>
 export module libyunpa:Positionable;
 import :Element;
