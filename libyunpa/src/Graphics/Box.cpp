@@ -39,7 +39,7 @@ void Box::calculate_output() {
     output_string += Chars::Box::HORIZONTAL;
   }
   output_string += Chars::Box::Round::LR;
-  output(output_string);
+  output(Colorable::apply(output_string));
 }
 
 void Box::calculate_dimensions() {
