@@ -20,6 +20,7 @@ target_sources(
          "System/Events.cppm"
          "System/Point2.cppm"
          "System/Time.cppm"
+         "System/Unicode.cppm"
   PRIVATE "Engine/Core.cpp"
           "Graphics/Box.cpp"
           "Graphics/Color.cpp"

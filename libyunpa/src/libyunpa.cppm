@@ -21,3 +21,4 @@ export import :Sizable;
 export import :Events;
 export import :Point2;
 export import :Time;
+export import :Unicode;
