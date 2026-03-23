@@ -22,5 +22,21 @@
             "displayName": "Debug",
             "configurePreset": "debug"
         }
+    ],
+    "workflowPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "debug"
+                },
+                {
+                    "type": "build",
+                    "name": "debug"
+                }
+            ]
+        }
     ]
 }
