@@ -20,4 +20,10 @@ target_sources(
          "System/Events.cppm"
          "System/Point2.cppm"
          "System/Time.cppm"
-  PRIVATE "Engine/Core.cpp")
+  PRIVATE "Engine/Core.cpp"
+          "Graphics/Color.cpp"
+          "Graphics/Colorable.cpp"
+          "Graphics/Element.cpp"
+          "Graphics/MaxSize.cpp"
+          "Graphics/MinSize.cpp"
+          "Graphics/Positionable.cpp")

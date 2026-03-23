@@ -17,37 +17,17 @@ private:
   Color _bgColor;
 
 protected:
-  auto apply(std::string_view text) {
-    return _color.apply(_bgColor.apply(text, true));
-  }
+  std::string apply(std::string_view text);
 
 public:
-  Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK)
-      : _color(color), _bgColor(bgColor) {}
-
-  Colorable(const Options &options)
-      : Colorable(options.color, options.bgColor) {}
-
+  Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK);
+  Colorable(const Options &options);
   virtual ~Colorable() = 0;
-
-  auto color(Color color) {
-    _color = color;
-  }
-
+  void color(Color color);
   [[nodiscard]]
-  auto color() const {
-    return _color;
-  }
-
-  auto bgColor(Color color) {
-    _bgColor = color;
-  }
-
+  Color color() const;
+  void bgColor(Color color);
   [[nodiscard]]
-  auto bgColor() const {
-    return _bgColor;
-  }
+  Color bgColor() const;
 };
-
-Colorable::~Colorable() = default;
 } // namespace libyunpa

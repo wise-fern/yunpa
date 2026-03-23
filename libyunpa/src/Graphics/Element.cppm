@@ -1,5 +1,4 @@
 module;
-#include <iostream>
 #include <memory>
 export module libyunpa:Element;
 import :Drawable;
@@ -10,20 +9,13 @@ private:
   std::string _output;
 
 protected:
-  auto output(std::string_view output) {
-    _output = output;
-  }
-
+  void output(std::string_view output);
   virtual void calculate_output() = 0;
 
 public:
   virtual ~Node() = 0;
-
-  void draw() const override {
-    std::cout << _output;
-  }
+  void draw() const override;
 };
 
-Node::~Node() = default;
 export using Element = std::shared_ptr<Node>;
 } // namespace libyunpa
