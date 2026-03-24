@@ -2,9 +2,9 @@ export module libyunpa;
 
 // Engine partitions
 export import :Core;
+export import :EventManager;
 export import :Scene;
 export import :SceneManager;
-export import :TermManager;
 
 // Graphics partitions
 export import :Color;

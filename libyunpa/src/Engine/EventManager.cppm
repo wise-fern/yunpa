@@ -1,8 +1,5 @@
 module;
 #include <atomic>
-#include <cstdint>
-#include <format>
-#include <iostream>
 #include <mutex>
 #include <optional>
 #include <queue>
@@ -13,7 +10,7 @@ module;
 #include <sys/ioctl.h>
 #include <termios.h>
 #endif
-export module libyunpa:TermManager;
+export module libyunpa:EventManager;
 import :Events;
 
 #ifndef WIN32
@@ -38,19 +35,7 @@ int _kbhit() {
 }
 #endif
 namespace libyunpa {
-export class TermManager final {
-
-public:
-  enum Modes : std::uint8_t { APPLICATION_CURSOR_KEYS = 1 };
-
-  static auto DECSET(Modes mode) {
-    std::cout << std::format("\x1b[?{}h", static_cast<int>(mode));
-  }
-
-  static auto DECRST(Modes mode) {
-    std::cout << std::format("\x1b[?{}l", static_cast<int>(mode));
-  }
-
+export class EventManager final {
 private:
   std::thread _monitor;
   std::atomic_flag _running;
@@ -75,7 +60,7 @@ public:
   auto start() {
     _running.test_and_set();
     _running.notify_all();
-    _monitor = std::thread(&TermManager::event_loop, this);
+    _monitor = std::thread(&EventManager::event_loop, this);
   }
 
   auto stop() {

@@ -4,7 +4,7 @@ target_sources(
          CXX_MODULES
          FILES
          "Core.cppm"
+         "EventManager.cppm"
          "Scene.cppm"
          "SceneManager.cppm"
-         "TermManager.cppm"
   PRIVATE "Core.cpp" "Scene.cpp" "SceneManager.cpp")
