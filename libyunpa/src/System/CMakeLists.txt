@@ -5,5 +5,6 @@ target_sources(
          FILES
          "Events.cppm"
          "Point2.cppm"
+         "Terminal.cppm"
          "Time.cppm"
          "Unicode.cppm")
