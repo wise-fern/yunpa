@@ -18,7 +18,7 @@ protected:
 
 public:
   Scene(ScenePtr parent = nullptr);
-  virtual ~Scene() = default;
+  ~Scene() override = default;
   [[nodiscard]]
   ScenePtr parent() const;
   [[nodiscard]]
