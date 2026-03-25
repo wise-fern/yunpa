@@ -12,6 +12,7 @@ else()
 endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" FOLDER
                                                            ${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} PRIVATE pegtl)
 if(NOT MSVC)
   target_compile_options(
     ${PROJECT_NAME}
