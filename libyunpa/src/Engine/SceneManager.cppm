@@ -11,7 +11,7 @@ private:
   ScenePtr _nextScene;
   std::stack<ScenePtr> _scenes;
 
-  void draw(const ScenePtr& scene) const;
+  void draw(const ScenePtr &scene) const;
   void pop_scene();
   void transition_scene();
 

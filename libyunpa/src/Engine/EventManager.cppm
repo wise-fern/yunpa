@@ -23,6 +23,6 @@ private:
 public:
   void start();
   void stop();
-  std::optional<Event> poll_event() ;
+  std::optional<Event> poll_event();
 };
 } // namespace libyunpa
