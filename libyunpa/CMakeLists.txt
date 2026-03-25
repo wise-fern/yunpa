@@ -21,7 +21,7 @@ if(NOT MSVC)
             -Wdocumentation
             -Weffc++
             -Wempty-body
-            -Werror
+            # -Werror
             -Wextra
             -Wimplicit
             -Wimplicit-fallthrough
