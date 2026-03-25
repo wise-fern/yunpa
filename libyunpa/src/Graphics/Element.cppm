@@ -1,14 +1,17 @@
 module;
 #include <memory>
 #include <string>
+#include <string_view>
 export module libyunpa:Element;
 import :Drawable;
 import :Point2;
 
 namespace libyunpa {
-class Node : public virtual IDrawable {
+// NOLINTNEXTLINE(misc-include-cleaner)
+export class Node : public virtual IDrawable {
 private:
   std::string _output;
+  // NOLINTNEXTLINE(misc-include-cleaner)
   Point2u _size;
 
 protected:
@@ -19,7 +22,7 @@ protected:
   virtual void update() = 0;
 
 public:
-  void draw() const override final;
+  void draw() const final;
   [[nodiscard]]
   unsigned int height() const;
   [[nodiscard]]

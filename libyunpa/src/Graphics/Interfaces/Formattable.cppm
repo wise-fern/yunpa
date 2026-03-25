@@ -22,15 +22,16 @@ private:
   bool _dim;
 
 protected:
-  std::string apply(std::string_view text);
+  [[nodiscard]]
+  std::string apply(std::string_view text) const;
 
 public:
   Formattable(const Options &options);
-  virtual ~Formattable() = 0;
+  ~Formattable() override = 0;
   void bold(bool bold);
   [[nodiscard]]
   bool bold() const;
-  void italic(bool bold);
+  void italic(bool italic);
   [[nodiscard]]
   bool italic() const;
   void underline(bool underline);

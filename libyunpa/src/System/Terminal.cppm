@@ -5,7 +5,7 @@ module;
 export module libyunpa:Terminal;
 
 namespace libyunpa {
-export enum DecMode : std::uint16_t {
+export enum class DecMode : std::uint16_t {
   APPLICATION_CURSOR_KEYS = 1,
   SMOOTH_SCROLL_MODE = 4,
   AUTO_REPEAT_KEYS = 8,

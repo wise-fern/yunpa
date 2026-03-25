@@ -29,6 +29,7 @@ public:
     _sceneMan.set_next_scene(std::move(scene));
   }
 
+  [[nodiscard]]
   auto get_current_scene() const {
     return _sceneMan.get_current_scene();
   }

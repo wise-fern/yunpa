@@ -7,13 +7,14 @@ export module libyunpa:Color;
 namespace libyunpa {
 export class Color {
 public:
+  // NOLINTNEXTLINE(cppcoreguidelines-use-enum-class)
   enum Builtin : std::uint8_t {
     AQUA,
     BLACK,
     BLUE,
     FUCHSIA,
     GRAY,
-    GREY = GRAY,
+    GREY,
     GREEN,
     LIME,
     MAROON,
@@ -30,9 +31,9 @@ private:
   unsigned char _blue;
 
   [[nodiscard]]
-  std::string apply_foreground(std::string_view text);
+  static std::string apply_foreground(std::string_view text);
   [[nodiscard]]
-  std::string apply_background(std::string_view text);
+  static std::string apply_background(std::string_view text);
   [[nodiscard]]
   std::string apply_values(std::string_view text);
 

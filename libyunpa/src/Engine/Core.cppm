@@ -12,8 +12,11 @@ private:
 
 public:
   Core() = delete;
+  ~Core() = default;
   Core(Core &) = delete;
   Core(Core &&) = delete;
+  Core &operator=(const Core &) = delete;
+  Core &operator=(Core &&) = delete;
 
   static void Init();
   static void Run();

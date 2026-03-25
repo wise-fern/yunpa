@@ -19,7 +19,7 @@ private:
 public:
   Colorable(Color color = Color::WHITE, Color bgColor = Color::BLACK);
   Colorable(const Options &options);
-  virtual ~Colorable() = 0;
+  ~Colorable() override = 0;
   std::string apply(std::string_view text);
   void color(Color color);
   [[nodiscard]]

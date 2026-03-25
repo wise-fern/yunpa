@@ -56,7 +56,7 @@ bool Formattable::dim() const {
   return _dim;
 }
 
-std::string Formattable::apply(std::string_view text) {
+std::string Formattable::apply(std::string_view text) const {
   std::string result{text};
   if (_bold) {
     result = std::format("\x1b[1m{}\x1b[22m", result);

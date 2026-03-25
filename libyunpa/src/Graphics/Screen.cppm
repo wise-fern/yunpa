@@ -6,16 +6,18 @@ import :Drawable;
 import :Point2;
 
 namespace libyunpa {
+// NOLINTNEXTLINE(misc-include-cleaner)
 export class Screen : public IDrawable {
 private:
-  Point2u _size;
+  // NOLINTNEXTLINE(misc-include-cleaner)
+  Point2u _size{.x = 0, .y = 0};
   std::vector<std::string> _iters;
 
   void update_size();
 
 public:
   Screen() = default;
-  ~Screen() = default;
+  ~Screen() override = default;
 
   void update();
   void draw() const override;

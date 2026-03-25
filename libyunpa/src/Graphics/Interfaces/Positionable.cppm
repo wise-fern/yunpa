@@ -8,16 +8,16 @@ namespace libyunpa {
 export class Positionable : public virtual Node {
 public:
   struct Options {
-    Point2u position{1u, 1u};
+    Point2u position{.x = 1U, .y = 1U};
   };
 
 private:
-  Point2u _position{1, 1};
+  Point2u _position{.x = 1, .y = 1};
 
 protected:
 public:
   Positionable(const Options &options);
-  virtual ~Positionable() = 0;
+  ~Positionable() override = 0;
   void position(Point2u position);
   [[nodiscard]]
   Point2u position() const;

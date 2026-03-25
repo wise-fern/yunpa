@@ -4,7 +4,7 @@ module;
 export module libyunpa:Events;
 
 namespace libyunpa {
-export enum Keys : std::uint8_t {
+export enum class Keys : std::uint8_t {
   KEY_A,
   KEY_B,
   KEY_C,
@@ -33,7 +33,7 @@ export enum Keys : std::uint8_t {
   KEY_Z
 };
 
-export enum KeyMods : std::uint8_t {
+export enum class KeyMods : std::uint8_t {
   NONE = 0 << 0,
   SHIFT = 1 << 0,
   ALT = 1 << 1,

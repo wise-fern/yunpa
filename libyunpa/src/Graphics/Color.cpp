@@ -33,6 +33,7 @@ unsigned char Color::blue() const {
 Color::Color(unsigned char red, unsigned char green, unsigned char blue)
     : _red(red), _green(green), _blue(blue) {}
 
+// NOLINTBEGIN(*-magic-numbers)
 Color::Color(Builtin name) : Color(0, 0, 0) {
   switch (name) {
   case WHITE:
@@ -65,6 +66,7 @@ Color::Color(Builtin name) : Color(0, 0, 0) {
   case SILVER:
     _red = _green = _blue = 0xC0;
     break;
+  case GREY:
   case GRAY:
     _red = _green = _blue = 0x80;
     break;
@@ -77,6 +79,7 @@ Color::Color(Builtin name) : Color(0, 0, 0) {
   }
 }
 
+// NOLINTEND(*-magic-numbers)
 std::string Color::apply_foreground(std::string_view text) {
   return std::format("\x1b[38;2;{}\x1b[39m", text);
 }

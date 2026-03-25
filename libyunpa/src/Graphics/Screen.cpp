@@ -2,11 +2,11 @@ module;
 #ifdef WIN32
 #include <windows.h>
 #else
+#include <stdexcept>
 #include <sys/ioctl.h>
 #include <unistd.h>
 #endif
 #include <iostream>
-#include <stdexcept>
 module libyunpa;
 import :Screen;
 
@@ -31,6 +31,7 @@ void Screen::draw() const {
 
 void Screen::update_size() {
 #ifdef WIN32
+  // NOLINTBEGIN
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) {
     _size = {
@@ -38,6 +39,7 @@ void Screen::update_size() {
         static_cast<unsigned int>(csbi.srWindow.Bottom - csbi.srWindow.Top +
                                   1)};
   }
+  // NOLINTEND
 #else
   winsize w{};
   const int status{ioctl(STDOUT_FILENO, TIOCGWINSZ, &w)};
