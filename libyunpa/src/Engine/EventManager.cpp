@@ -4,6 +4,7 @@ module;
 #include <mutex>
 #include <optional>
 #include <queue>
+#include <tao/pegtl.hpp>
 #include <thread>
 
 #ifdef WIN32
@@ -35,6 +36,27 @@ int _kbhit() {
   return bytesWaiting;
 }
 #endif
+namespace {
+namespace Grammar {
+using namespace tao::pegtl;
+
+struct ESC : one<'\x1b'> {};
+
+struct CSI : seq<ESC, one<'['>> {};
+
+struct OSC : seq<ESC, one<']'>> {};
+
+struct ST : seq<ESC, one<'\\'>> {};
+
+template <char... delim>
+struct DigitPlusTerm : seq<plus<digit>, one<delim...>> {};
+
+using DigitPlusSemi = DigitPlusTerm<';'>;
+
+struct Language : sor<> {};
+} // namespace Grammar
+} // namespace
+
 namespace libyunpa {
 void EventManager::event_loop() {
   while (_running.test()) {
@@ -42,7 +64,10 @@ void EventManager::event_loop() {
     while (_kbhit() not_eq 0) {
       auto input{std::cin.get()};
       working_string += static_cast<char>(input);
-      // TODO parse the input
+      auto parser_input = tao::pegtl::memory_input(working_string, "");
+      if (tao::pegtl::parse<Grammar::Language>(parser_input)) {
+        working_string.clear();
+      }
     }
   }
 }
