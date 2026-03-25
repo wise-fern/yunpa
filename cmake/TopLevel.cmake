@@ -7,3 +7,11 @@ set(CMAKE_COLOR_DIAGNOSTICS YES)
 if(WIN32)
   add_compile_definitions(WIN32=1)
 endif()
+include(FetchContent)
+FetchContent_Declare(
+  pegtl
+  GIT_REPOSITORY https://github.com/taocpp/pegtl.git
+  GIT_TAG 3.2.8
+  GIT_SHALLOW ON
+  SYSTEM EXCLUDE_FROM_ALL OVERRIDE_FIND_PACKAGE)
+FetchContent_MakeAvailable(pegtl)
