@@ -4,7 +4,8 @@ module libyunpa;
 import :SceneManager;
 
 namespace libyunpa {
-void SceneManager::draw(ScenePtr scene) const {
+// NOLINTNEXTLINE(misc-no-recursion)
+void SceneManager::draw(const ScenePtr &scene) const {
   if (scene == nullptr) {
     return;
   }
