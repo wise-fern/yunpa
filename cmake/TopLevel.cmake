@@ -14,4 +14,3 @@ FetchContent_Declare(
   GIT_TAG 3.2.8
   GIT_SHALLOW ON
   SYSTEM EXCLUDE_FROM_ALL OVERRIDE_FIND_PACKAGE)
-FetchContent_MakeAvailable(pegtl)
