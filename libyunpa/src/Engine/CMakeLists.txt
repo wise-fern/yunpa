@@ -7,4 +7,4 @@ target_sources(
          "EventManager.cppm"
          "Scene.cppm"
          "SceneManager.cppm"
-  PRIVATE "Core.cpp" "Scene.cpp" "SceneManager.cpp")
+  PRIVATE "Core.cpp" "EventManager.cpp" "Scene.cpp" "SceneManager.cpp")
