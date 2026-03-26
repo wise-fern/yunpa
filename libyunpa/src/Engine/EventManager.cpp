@@ -36,7 +36,7 @@ int _kbhit() {
   return bytesWaiting;
 }
 #endif
-namespace {
+
 namespace Grammar {
 using namespace tao::pegtl;
 
@@ -102,7 +102,6 @@ template <> struct Action<Grammar::FocusEvent> {
     // TODO Create FocusEvent from input
   }
 };
-} // namespace
 
 namespace libyunpa {
 void EventManager::event_loop() {
