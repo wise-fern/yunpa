@@ -83,6 +83,13 @@ template <> struct Action<Grammar::Win32InputString> {
     // TODO Create KeyEvent from Win32 input string
   }
 };
+
+template <> struct Action<Grammar::FocusEvent> {
+  template <typename ActionInput>
+  static void apply([[maybe_unused]] const ActionInput &actionInput) {
+    // TODO Create FocusEvent from input
+  }
+};
 } // namespace
 
 namespace libyunpa {
