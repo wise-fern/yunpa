@@ -81,7 +81,7 @@ auto ConvertAndTrim(std::string &input, char delim = ';') {
   return result;
 }
 
-libyunpa::Keys ConvertMSVK([[gnu::unused]] int virtualKey) {
+libyunpa::Keys ConvertMSVK(int virtualKey) {
   // TODO implement converting MS virtual keys
 #ifndef WIN32
   return libyunpa::Keys::KEY_A;
@@ -183,20 +183,17 @@ template <typename Rule> struct Action {
 
 template <> struct Action<Grammar::Win32InputString> {
   template <typename ActionInput>
-  static void apply([[gnu::unused]] const ActionInput &actionInput,
-                    [[gnu::unused]] const EnqueueCallback &callback) {
+  static void apply(const ActionInput &actionInput,
+                    const EnqueueCallback &callback) {
     // TODO Create KeyEvent from Win32 input string
     std::string input{actionInput.string()};
     input = input.substr(2);
-    [[gnu::unused]]
     auto vKeyCode{ConvertAndTrim(input)};
     [[gnu::unused]]
     auto vScanCode{ConvertAndTrim(input)};
     [[gnu::unused]]
     auto uniChar{ConvertAndTrim(input)};
-    [[gnu::unused]]
     auto keyDown{ConvertAndTrim(input) == 1};
-    [[gnu::unused]]
     auto controlKeys{ConvertAndTrim(input)};
     libyunpa::Events::KeyEvent event{.isKeyDown = keyDown,
                                      .key = ConvertMSVK(vKeyCode),
