@@ -72,21 +72,26 @@ struct SGRMouse : seq<CSI,
 struct Language : sor<Win32InputString, FocusEvent, SGRMouse> {};
 } // namespace Grammar
 
+using EnqueueCallback = std::function<void(libyunpa::Event)>;
+
 template <typename Rule> struct Action {
   template <typename ActionInput>
-  static void apply([[maybe_unused]] const ActionInput &actionInput) {}
+  static void apply([[maybe_unused]] const ActionInput &actionInput,
+                    [[maybe_unused]] const EnqueueCallback &callback) {}
 };
 
 template <> struct Action<Grammar::Win32InputString> {
   template <typename ActionInput>
-  static void apply([[maybe_unused]] const ActionInput &actionInput) {
+  static void apply([[maybe_unused]] const ActionInput &actionInput,
+                    [[maybe_unused]] const EnqueueCallback &callback) {
     // TODO Create KeyEvent from Win32 input string
   }
 };
 
 template <> struct Action<Grammar::FocusEvent> {
   template <typename ActionInput>
-  static void apply([[maybe_unused]] const ActionInput &actionInput) {
+  static void apply([[maybe_unused]] const ActionInput &actionInput,
+                    [[maybe_unused]] const EnqueueCallback &callback) {
     // TODO Create FocusEvent from input
   }
 };
@@ -100,7 +105,10 @@ void EventManager::event_loop() {
       auto input{std::cin.get()};
       working_string += static_cast<char>(input);
       auto parser_input = tao::pegtl::memory_input(working_string, "");
-      if (tao::pegtl::parse<Grammar::Language, Action>(parser_input)) {
+      if (tao::pegtl::parse<Grammar::Language, Action>(parser_input,
+                                                       [&](Event event) {
+                                                         enqueue_event(event);
+                                                       })) {
         working_string.clear();
       }
     }
