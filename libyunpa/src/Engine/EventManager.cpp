@@ -63,7 +63,13 @@ struct Win32InputString : seq<CSI,
 
 struct FocusEvent : seq<CSI, one<'I', 'O'>> {};
 
-struct Language : sor<Win32InputString, FocusEvent> {};
+struct SGRMouse : seq<CSI,
+                      one<'<'>,
+                      DigitPlusSemi,
+                      DigitPlusSemi,
+                      DigitPlusTerm<'M', 'm'>> {};
+
+struct Language : sor<Win32InputString, FocusEvent, SGRMouse> {};
 } // namespace Grammar
 
 template <typename Rule> struct Action {
