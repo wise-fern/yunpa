@@ -81,6 +81,7 @@ auto ConvertAndTrim(std::string &input, char delim = ';') {
 }
 
 libyunpa::Keys ConvertMSVK([[maybe_unused]] int virtualKey) {
+  // TODO implement converting MS virtual keys
 #ifndef WIN32
   return libyunpa::Keys::KEY_A;
 #endif
@@ -91,6 +92,7 @@ libyunpa::Keys ConvertMSVK([[maybe_unused]] int virtualKey) {
 }
 
 libyunpa::KeyMods ConvertMSCK([[maybe_unused]] int controlKeys) {
+  // TODO implement converting MS control keys
 #ifndef WIN32
   return libyunpa::KeyMods::NONE;
 #endif
