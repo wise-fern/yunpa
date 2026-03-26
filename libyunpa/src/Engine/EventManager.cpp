@@ -61,7 +61,9 @@ struct Win32InputString : seq<CSI,
                               DigitPlusSemi,
                               DigitPlusTerm<'_'>> {};
 
-struct Language : sor<Win32InputString> {};
+struct FocusEvent : seq<CSI, one<'I', 'O'>> {};
+
+struct Language : sor<Win32InputString, FocusEvent> {};
 } // namespace Grammar
 
 template <typename Rule> struct Action {
