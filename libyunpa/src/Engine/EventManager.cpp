@@ -80,6 +80,23 @@ auto ConvertAndTrim(std::string &input, char delim = ';') {
   return result;
 }
 
+libyunpa::Keys ConvertMSVK([[maybe_unused]] int virtualKey) {
+#ifndef WIN32
+  return libyunpa::Keys::KEY_A;
+#endif
+  switch (virtualKey) {
+  default:
+    return libyunpa::Keys::KEY_A;
+  }
+}
+
+libyunpa::KeyMods ConvertMSCK([[maybe_unused]] int controlKeys) {
+#ifndef WIN32
+  return libyunpa::KeyMods::NONE;
+#endif
+  return libyunpa::KeyMods::NONE;
+}
+
 using EnqueueCallback = std::function<void(libyunpa::Event)>;
 
 template <typename Rule> struct Action {
@@ -93,6 +110,22 @@ template <> struct Action<Grammar::Win32InputString> {
   static void apply([[maybe_unused]] const ActionInput &actionInput,
                     [[maybe_unused]] const EnqueueCallback &callback) {
     // TODO Create KeyEvent from Win32 input string
+    std::string input{actionInput.string()};
+    input = input.substr(2);
+    [[maybe_unused]]
+    auto vKeyCode{ConvertAndTrim(input)};
+    [[maybe_unused]]
+    auto vScanCode{ConvertAndTrim(input)};
+    [[maybe_unused]]
+    auto uniChar{ConvertAndTrim(input)};
+    [[maybe_unused]]
+    auto keyDown{ConvertAndTrim(input) == 1};
+    [[maybe_unused]]
+    auto controlKeys{ConvertAndTrim(input)};
+    libyunpa::Events::KeyEvent event{.isKeyDown = keyDown,
+                                     .key = ConvertMSVK(vKeyCode),
+                                     .mods = ConvertMSCK(controlKeys)};
+    callback(event);
   }
 };
 
