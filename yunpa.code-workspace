@@ -8,6 +8,9 @@
 		"clangd.arguments": [
 			"--experimental-modules-support",
 			"--header-insertion=never"
+		],
+		"github-actions.workflows.pinned.workflows": [
+			".github/workflows/build.yaml"
 		]
 	}
 }
