@@ -10,6 +10,7 @@ module;
 
 #ifdef WIN32
 #include <conio.h>
+#include <windows.h>
 #else
 #include <sys/ioctl.h>
 #include <termios.h>
@@ -86,6 +87,79 @@ libyunpa::Keys ConvertMSVK([[maybe_unused]] int virtualKey) {
   return libyunpa::Keys::KEY_A;
 #endif
   switch (virtualKey) {
+    using enum libyunpa::Keys;
+  case VK_DELETE:
+    return KEY_DELETE;
+  case VK_INSERT:
+    return KEY_INSERT;
+  case VK_HOME:
+    return KEY_HOME;
+  case VK_END:
+    return KEY_END;
+  case VK_PRIOR:
+    return KEY_PAGE_UP;
+  case VK_NEXT:
+    return KEY_PAGE_DOWN;
+  case VK_UP:
+    return KEY_ARROW_UP;
+  case VK_RIGHT:
+    return KEY_ARROW_RIGHT;
+  case VK_DOWN:
+    return KEY_ARROW_DOWN;
+  case VK_LEFT:
+    return KEY_ARROW_LEFT;
+  case 'A':
+    return KEY_A;
+  case 'B':
+    return KEY_B;
+  case 'C':
+    return KEY_C;
+  case 'D':
+    return KEY_D;
+  case 'E':
+    return KEY_E;
+  case 'F':
+    return KEY_F;
+  case 'G':
+    return KEY_G;
+  case 'H':
+    return KEY_H;
+  case 'I':
+    return KEY_I;
+  case 'J':
+    return KEY_J;
+  case 'K':
+    return KEY_K;
+  case 'L':
+    return KEY_L;
+  case 'M':
+    return KEY_M;
+  case 'N':
+    return KEY_N;
+  case 'O':
+    return KEY_O;
+  case 'P':
+    return KEY_P;
+  case 'Q':
+    return KEY_Q;
+  case 'R':
+    return KEY_R;
+  case 'S':
+    return KEY_S;
+  case 'T':
+    return KEY_T;
+  case 'U':
+    return KEY_U;
+  case 'V':
+    return KEY_V;
+  case 'W':
+    return KEY_W;
+  case 'X':
+    return KEY_X;
+  case 'Y':
+    return KEY_Y;
+  case 'Z':
+    return KEY_Z;
   default:
     return libyunpa::Keys::KEY_A;
   }
