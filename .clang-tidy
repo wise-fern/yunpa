@@ -27,7 +27,6 @@ ImplementationFileExtensions:
 HeaderFilterRegex: '.*'
 ExcludeHeaderFilterRegex: ''
 FormatStyle:     none
-User:            jsf81
 CheckOptions:    {
   cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
 }
