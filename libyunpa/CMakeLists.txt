@@ -34,6 +34,7 @@ if(NOT MSVC)
             -Wsuggest-override
             -Wunreachable-code
             -Wunreachable-code-aggressive
-            -Wunused)
+            -Wunused
+            -Wused-but-marked-unused)
 endif()
 add_subdirectory("src")
