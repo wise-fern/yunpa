@@ -72,6 +72,13 @@ struct SGRMouse : seq<CSI,
 struct Language : sor<Win32InputString, FocusEvent, SGRMouse> {};
 } // namespace Grammar
 
+auto ConvertAndTrim(std::string &input, char delim = ';') {
+  auto count{input.find(delim)};
+  auto result{std::stoi(input.substr(0, count))};
+  input.erase(0, ++count);
+  return result;
+}
+
 using EnqueueCallback = std::function<void(libyunpa::Event)>;
 
 template <typename Rule> struct Action {
