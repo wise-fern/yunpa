@@ -81,7 +81,7 @@ auto ConvertAndTrim(std::string &input, char delim = ';') {
   return result;
 }
 
-libyunpa::Keys ConvertMSVK([[maybe_unused]] int virtualKey) {
+libyunpa::Keys ConvertMSVK([[gnu::unused]] int virtualKey) {
   // TODO implement converting MS virtual keys
 #ifndef WIN32
   return libyunpa::Keys::KEY_A;
@@ -165,7 +165,7 @@ libyunpa::Keys ConvertMSVK([[maybe_unused]] int virtualKey) {
   }
 }
 
-libyunpa::KeyMods ConvertMSCK([[maybe_unused]] int controlKeys) {
+libyunpa::KeyMods ConvertMSCK([[gnu::unused]] int controlKeys) {
   // TODO implement converting MS control keys
 #ifndef WIN32
   return libyunpa::KeyMods::NONE;
@@ -177,26 +177,26 @@ using EnqueueCallback = std::function<void(libyunpa::Event)>;
 
 template <typename Rule> struct Action {
   template <typename ActionInput>
-  static void apply([[maybe_unused]] const ActionInput &actionInput,
-                    [[maybe_unused]] const EnqueueCallback &callback) {}
+  static void apply([[gnu::unused]] const ActionInput &actionInput,
+                    [[gnu::unused]] const EnqueueCallback &callback) {}
 };
 
 template <> struct Action<Grammar::Win32InputString> {
   template <typename ActionInput>
-  static void apply([[maybe_unused]] const ActionInput &actionInput,
-                    [[maybe_unused]] const EnqueueCallback &callback) {
+  static void apply([[gnu::unused]] const ActionInput &actionInput,
+                    [[gnu::unused]] const EnqueueCallback &callback) {
     // TODO Create KeyEvent from Win32 input string
     std::string input{actionInput.string()};
     input = input.substr(2);
-    [[maybe_unused]]
+    [[gnu::unused]]
     auto vKeyCode{ConvertAndTrim(input)};
-    [[maybe_unused]]
+    [[gnu::unused]]
     auto vScanCode{ConvertAndTrim(input)};
-    [[maybe_unused]]
+    [[gnu::unused]]
     auto uniChar{ConvertAndTrim(input)};
-    [[maybe_unused]]
+    [[gnu::unused]]
     auto keyDown{ConvertAndTrim(input) == 1};
-    [[maybe_unused]]
+    [[gnu::unused]]
     auto controlKeys{ConvertAndTrim(input)};
     libyunpa::Events::KeyEvent event{.isKeyDown = keyDown,
                                      .key = ConvertMSVK(vKeyCode),
@@ -207,8 +207,8 @@ template <> struct Action<Grammar::Win32InputString> {
 
 template <> struct Action<Grammar::FocusEvent> {
   template <typename ActionInput>
-  static void apply([[maybe_unused]] const ActionInput &actionInput,
-                    [[maybe_unused]] const EnqueueCallback &callback) {
+  static void apply([[gnu::unused]] const ActionInput &actionInput,
+                    [[gnu::unused]] const EnqueueCallback &callback) {
     // TODO Create FocusEvent from input
   }
 };
