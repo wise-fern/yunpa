@@ -1,5 +1,6 @@
 module;
 #include <atomic>
+#include <functional>
 #include <iostream>
 #include <mutex>
 #include <optional>
