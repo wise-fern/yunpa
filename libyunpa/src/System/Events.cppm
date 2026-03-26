@@ -41,11 +41,17 @@ export enum class KeyMods : std::uint8_t {
   CONTROL = CTRL
 };
 
+namespace Events {
 export struct KeyEvent {
   bool isKeyDown;
   Keys key;
   KeyMods mods;
 };
 
-export using Event = std::variant<KeyEvent>;
+export struct FocusEvent {
+  bool hasFocus;
+};
+} // namespace Events
+
+export using Event = std::variant<Events::KeyEvent, Events::FocusEvent>;
 } // namespace libyunpa
