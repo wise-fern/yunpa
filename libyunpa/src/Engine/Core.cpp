@@ -8,6 +8,7 @@ class Core::impl final {
 private:
   GameTime _gameTime;
   SceneManager _sceneMan;
+  EventManager _eventMan;
 
   auto game_loop() {
     while (true) {
@@ -16,13 +17,18 @@ private:
       if (_sceneMan.empty()) {
         return;
       }
+      while (const auto event{_eventMan.poll_event()}) {
+        _sceneMan.handle_event(event.value());
+      }
     }
   }
 
 public:
   auto run() {
+    _eventMan.start();
     _gameTime.reset();
     game_loop();
+    _eventMan.stop();
   }
 
   auto set_next_scene(ScenePtr scene) {
