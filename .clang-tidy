@@ -9,6 +9,7 @@ Checks:
   - 'portability-*'
   - 'readability-*'
   - '-bugprone-easily-swappable-parameters'
+  - '-misc-use-internal-linkage'
   - '-modernize-use-trailing-return-type'
   - '-readability-identifier-length'
 WarningsAsErrors: '*'
