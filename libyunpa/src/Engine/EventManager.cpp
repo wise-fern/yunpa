@@ -85,7 +85,7 @@ libyunpa::Keys ConvertMSVK(int virtualKey) {
   // TODO implement converting MS virtual keys
 #ifndef WIN32
   return libyunpa::Keys::KEY_A;
-#endif
+#else
   switch (virtualKey) {
     using enum libyunpa::Keys;
   case VK_DELETE:
@@ -163,6 +163,7 @@ libyunpa::Keys ConvertMSVK(int virtualKey) {
   default:
     return libyunpa::Keys::KEY_A;
   }
+#endif
 }
 
 libyunpa::KeyMods ConvertMSCK([[gnu::unused]] int controlKeys) {
