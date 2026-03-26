@@ -53,7 +53,15 @@ struct DigitPlusTerm : seq<plus<digit>, one<delim...>> {};
 
 using DigitPlusSemi = DigitPlusTerm<';'>;
 
-struct Language : sor<> {};
+struct Win32InputString : seq<CSI,
+                              DigitPlusSemi,
+                              DigitPlusSemi,
+                              DigitPlusSemi,
+                              DigitPlusSemi,
+                              DigitPlusSemi,
+                              DigitPlusTerm<'_'>> {};
+
+struct Language : sor<Win32InputString> {};
 } // namespace Grammar
 
 template <typename Rule> struct Action {
@@ -77,7 +85,7 @@ void EventManager::event_loop() {
       auto input{std::cin.get()};
       working_string += static_cast<char>(input);
       auto parser_input = tao::pegtl::memory_input(working_string, "");
-      if (tao::pegtl::parse<Grammar::Language>(parser_input)) {
+      if (tao::pegtl::parse<Grammar::Language, Action>(parser_input)) {
         working_string.clear();
       }
     }
