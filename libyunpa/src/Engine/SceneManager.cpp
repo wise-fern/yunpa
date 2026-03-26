@@ -69,4 +69,11 @@ ScenePtr SceneManager::get_current_scene() const {
 bool SceneManager::empty() const {
   return _scenes.empty();
 }
+
+void SceneManager::handle_event(const Event &event) {
+  if (_scenes.empty()) {
+    return;
+  }
+  _scenes.top()->handle_event(event);
+}
 } // namespace libyunpa

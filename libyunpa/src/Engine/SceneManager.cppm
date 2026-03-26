@@ -2,6 +2,7 @@ module;
 #include <stack>
 export module libyunpa:SceneManager;
 import :Drawable;
+import :Events;
 import :Scene;
 import :Time;
 
@@ -20,6 +21,7 @@ public:
   void update(const GameTime &gameTime);
   void draw() const override;
   void set_next_scene(ScenePtr scene);
+  void handle_event(const Event &event);
   [[nodiscard]]
   ScenePtr get_current_scene() const;
   [[nodiscard]]

@@ -2,6 +2,7 @@ module;
 #include <memory>
 export module libyunpa:Scene;
 import :Drawable;
+import :Events;
 import :Time;
 
 namespace libyunpa {
@@ -26,5 +27,6 @@ public:
   virtual void on_bury();
   virtual void on_reveal();
   virtual void update(const GameTime &gameTime) = 0;
+  virtual void handle_event(const Event &event) = 0;
 };
 } // namespace libyunpa
