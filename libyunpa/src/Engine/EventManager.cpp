@@ -55,6 +55,18 @@ using DigitPlusSemi = DigitPlusTerm<';'>;
 
 struct Language : sor<> {};
 } // namespace Grammar
+
+template <typename Rule> struct Action {
+  template <typename ActionInput>
+  static void apply([[maybe_unused]] const ActionInput &actionInput) {}
+};
+
+template <> struct Action<Grammar::Win32InputString> {
+  template <typename ActionInput>
+  static void apply([[maybe_unused]] const ActionInput &actionInput) {
+    // TODO Create KeyEvent from Win32 input string
+  }
+};
 } // namespace
 
 namespace libyunpa {
