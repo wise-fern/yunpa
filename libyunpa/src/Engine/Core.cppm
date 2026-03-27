@@ -1,6 +1,7 @@
 module;
 #include <memory>
 export module libyunpa:Core;
+import :Point2;
 import :Scene;
 
 namespace libyunpa {
