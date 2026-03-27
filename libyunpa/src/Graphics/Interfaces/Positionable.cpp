@@ -20,6 +20,10 @@ Point2u Positionable::position() const {
 }
 
 std::string Positionable::apply(std::string_view text) {
+  if (_centered) {
+    auto size{Core::GetSize()};
+    return std::format("\x1b[{};{}H{}", size.y / 2, size.x / 2, text);
+  }
   return std::format("\x1b[{};{}H{}", _position.y, _position.x, text);
 }
 
