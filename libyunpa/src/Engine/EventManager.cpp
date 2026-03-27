@@ -208,9 +208,12 @@ template <> struct Action<Grammar::Win32InputString> {
 
 template <> struct Action<Grammar::FocusEvent> {
   template <typename ActionInput>
-  static void apply([[gnu::unused]] const ActionInput &actionInput,
-                    [[gnu::unused]] const EnqueueCallback &callback) {
-    // TODO Create FocusEvent from input
+  static void apply(const ActionInput &actionInput,
+                    const EnqueueCallback &callback) {
+    libyunpa::Events::FocusEvent event{};
+    std::string input{actionInput.string()};
+    event.hasFocus = input.find('O') == std::string::npos;
+    callback(event);
   }
 };
 
