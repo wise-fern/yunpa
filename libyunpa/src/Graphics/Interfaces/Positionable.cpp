@@ -33,5 +33,6 @@ bool Positionable::centered() const {
 
 void Positionable::centered(bool centered) {
   _centered = centered;
+  update();
 }
 } // namespace libyunpa
