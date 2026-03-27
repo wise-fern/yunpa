@@ -8,7 +8,7 @@ namespace libyunpa {
 Positionable::~Positionable() = default;
 
 Positionable::Positionable(const Options &options)
-    : _position(options.position) {}
+    : _position(options.position), _centered(options.centered) {}
 
 void Positionable::position(Point2u position) {
   _position = position;
