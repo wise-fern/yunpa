@@ -21,6 +21,7 @@ private:
   void event_loop();
 
 public:
+  EventManager();
   void start();
   void stop();
   std::optional<Event> poll_event();

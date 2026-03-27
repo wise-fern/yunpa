@@ -1,7 +1,6 @@
 module;
 #include <atomic>
 #include <functional>
-#include <iostream>
 #include <mutex>
 #include <optional>
 #include <queue>
@@ -12,11 +11,13 @@ module;
 #include <conio.h>
 #include <windows.h>
 #else
+#include <iostream>
 #include <sys/ioctl.h>
 #include <termios.h>
 #endif
 module libyunpa;
 import :EventManager;
+import :Terminal;
 #ifndef WIN32
 int _kbhit() {
   static constexpr auto STDIN{0};
@@ -186,7 +187,6 @@ template <> struct Action<Grammar::Win32InputString> {
   template <typename ActionInput>
   static void apply(const ActionInput &actionInput,
                     const EnqueueCallback &callback) {
-    // TODO Create KeyEvent from Win32 input string
     std::string input{actionInput.string()};
     input = input.substr(2);
     auto vKeyCode{ConvertAndTrim(input)};
@@ -212,11 +212,32 @@ template <> struct Action<Grammar::FocusEvent> {
 };
 
 namespace libyunpa {
+EventManager::EventManager() {
+#ifdef WIN32
+  auto *handle{GetStdHandle(STD_INPUT_HANDLE)};
+  DWORD mode = (ENABLE_PROCESSED_INPUT bitor ENABLE_WINDOW_INPUT bitor
+                ENABLE_MOUSE_INPUT bitor ENABLE_EXTENDED_FLAGS bitor
+                ENABLE_VIRTUAL_TERMINAL_INPUT) bitand
+               compl(ENABLE_QUICK_EDIT_MODE bitor ENABLE_ECHO_INPUT);
+  SetConsoleMode(handle, mode);
+  mode = (ENABLE_PROCESSED_OUTPUT bitor DISABLE_NEWLINE_AUTO_RETURN bitor
+          ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+  handle = GetStdHandle(STD_OUTPUT_HANDLE);
+  SetConsoleMode(handle, mode);
+#endif
+  DECSET(DecMode::WIN32_INPUT_MODE);
+  DECRST(DecMode::SHOW_CURSOR);
+}
+
 void EventManager::event_loop() {
   while (_running.test()) {
     std::string working_string;
     while (_kbhit() not_eq 0) {
+#ifndef WIN32
       auto input{std::cin.get()};
+#else
+      auto input{_getch()};
+#endif
       working_string += static_cast<char>(input);
       auto parser_input = tao::pegtl::memory_input(working_string, "");
       if (tao::pegtl::parse<Grammar::Language, Action>(parser_input,
