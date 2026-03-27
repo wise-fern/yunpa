@@ -172,8 +172,9 @@ libyunpa::KeyMods ConvertMSCK([[gnu::unused]] int controlKeys) {
   // TODO implement converting MS control keys
 #ifndef WIN32
   return libyunpa::KeyMods::NONE;
-#endif
+#else
   return libyunpa::KeyMods::NONE;
+#endif
 }
 
 using EnqueueCallback = std::function<void(libyunpa::Event)>;
