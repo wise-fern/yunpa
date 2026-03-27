@@ -19,6 +19,7 @@ module libyunpa;
 import :EventManager;
 import :Terminal;
 #ifndef WIN32
+// NOLINTNEXTLINE(bugprone-reserved-identifier)
 int _kbhit() {
   static constexpr auto STDIN{0};
   static bool initialized{false};
