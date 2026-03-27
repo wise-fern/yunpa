@@ -22,5 +22,6 @@ public:
   static void Run();
   static void SetNextScene(ScenePtr scene);
   static ScenePtr GetCurrentScene();
+  static Point2u GetSize();
 };
 } // namespace libyunpa

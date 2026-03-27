@@ -1,6 +1,10 @@
 module;
 #include <cassert>
 #include <memory>
+#ifdef WIN32
+#include <windows.h>
+#else
+#endif
 module libyunpa;
 
 namespace libyunpa {
@@ -39,6 +43,31 @@ public:
   auto get_current_scene() const {
     return _sceneMan.get_current_scene();
   }
+
+  [[nodiscard]]
+  // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
+  auto get_size() const {
+    Point2u size;
+#ifdef WIN32
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi) !=
+        0) {
+      size.x = static_cast<unsigned int>(csbi.srWindow.Right -
+                                         csbi.srWindow.Left + 1);
+      size.y = static_cast<unsigned int>(csbi.srWindow.Bottom -
+                                         csbi.srWindow.Top + 1);
+    }
+#else
+    winsize w{};
+    const int status = ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    if (w.ws_col == 0 or w.ws_row == 0 or status < 0) {
+      throw std::runtime_error{"Terminal size is wrong!"};
+    }
+    size.x = w.ws_col;
+    size.y = w.ws_row;
+#endif
+    return size;
+  }
 };
 
 std::unique_ptr<Core::impl> Core::_instance{nullptr};
@@ -65,5 +94,10 @@ void Core::SetNextScene(ScenePtr scene) {
 ScenePtr Core::GetCurrentScene() {
   assert(_initialized);
   return _instance->get_current_scene();
+}
+
+Point2u Core::GetSize() {
+  assert(_initialized);
+  return _instance->get_size();
 }
 } // namespace libyunpa
