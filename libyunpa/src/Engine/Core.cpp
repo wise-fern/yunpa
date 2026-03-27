@@ -26,6 +26,7 @@ private:
       while (const auto event{_eventMan.poll_event()}) {
         _sceneMan.handle_event(event.value());
       }
+      _sceneMan.draw();
     }
   }
 
@@ -52,13 +53,12 @@ public:
     Point2u size;
 #ifdef WIN32
     CONSOLE_SCREEN_BUFFER_INFO csbi;
-    if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi) !=
-        0) {
-      size.x = static_cast<unsigned int>(csbi.srWindow.Right -
-                                         csbi.srWindow.Left + 1);
-      size.y = static_cast<unsigned int>(csbi.srWindow.Bottom -
-                                         csbi.srWindow.Top + 1);
-    }
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    size.x =
+        static_cast<unsigned int>(csbi.srWindow.Right - csbi.srWindow.Left + 1);
+    size.y =
+        static_cast<unsigned int>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
+
 #else
     winsize w{};
     const int status = ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
