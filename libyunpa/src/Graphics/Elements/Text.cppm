@@ -21,7 +21,7 @@ protected:
   void update() override;
 
 public:
-  Text(const Options &options);
+  Text(const Options &options = {});
   [[nodiscard]]
   std::string_view text() const;
   void text(std::string_view text);
