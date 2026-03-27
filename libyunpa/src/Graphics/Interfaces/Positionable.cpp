@@ -22,4 +22,12 @@ Point2u Positionable::position() const {
 std::string Positionable::apply(std::string_view text) {
   return std::format("\x1b[{};{}H{}", _position.y, _position.x, text);
 }
+
+bool Positionable::centered() const {
+  return _centered;
+}
+
+void Positionable::centered(bool centered) {
+  _centered = centered;
+}
 } // namespace libyunpa

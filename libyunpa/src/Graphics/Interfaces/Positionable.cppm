@@ -9,10 +9,12 @@ export class Positionable : public virtual Node {
 public:
   struct Options {
     Point2u position{.x = 1U, .y = 1U};
+    bool centered{false};
   };
 
 private:
   Point2u _position{.x = 1, .y = 1};
+  bool _centered{false};
 
 protected:
 public:
@@ -21,6 +23,9 @@ public:
   void position(Point2u position);
   [[nodiscard]]
   Point2u position() const;
+  void centered(bool centered);
+  [[nodiscard]]
+  bool centered() const;
   std::string apply(std::string_view text);
 };
 } // namespace libyunpa
