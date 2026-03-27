@@ -16,6 +16,7 @@ std::string_view Text::text() const {
 
 void Text::text(std::string_view text) {
   _text = text;
+  update();
 }
 
 void Text::update() {
