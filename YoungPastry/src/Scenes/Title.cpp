@@ -1,5 +1,5 @@
 module;
-#include <variant>
+
 module YoungPastry;
 
 namespace YoungPastry::Scenes {
@@ -11,16 +11,11 @@ template <class... Ts> struct Overload : Ts... {
   using Ts::operator()...;
 };
 
-void Title::handle_event(const libyunpa::Event &event) {
-  auto handler = Overload{[&](const libyunpa::Events::KeyEvent &event) {
-                            if (event.isKeyDown) {
-                              if (event.key == libyunpa::Keys::KEY_Q) {
-                                request_exit();
-                              }
-                            }
-                          },
-                          [](const libyunpa::Events::FocusEvent &event) {},
-                          [](const libyunpa::Events::MouseEvent &event) {}};
-  std::visit(handler, event);
+void Title::handle_event(const libyunpa::Events::KeyEvent &event) {
+  if (event.isKeyDown) {
+    if (event.key == libyunpa::Keys::KEY_Q) {
+      request_exit();
+    }
+  }
 }
 } // namespace YoungPastry::Scenes
