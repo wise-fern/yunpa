@@ -5,8 +5,8 @@ import YoungPastry;
 int main() {
   using libyunpa::Core;
   using namespace YoungPastry;
-  auto title{std::make_shared<Scenes::Title>()};
   Core::Init();
+  auto title{std::make_shared<Scenes::Title>()};
   Core::SetNextScene(title);
   Core::Run();
 }
