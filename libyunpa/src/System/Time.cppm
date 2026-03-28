@@ -1,5 +1,7 @@
 module;
 #include <chrono>
+#include <ratio>
+
 export module libyunpa:Time;
 
 namespace libyunpa {

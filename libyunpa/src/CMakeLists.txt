@@ -1,31 +1,5 @@
-target_sources(
-  ${PROJECT_NAME}
-  PUBLIC FILE_SET
-         CXX_MODULES
-         FILES
-         "libyunpa.cppm"
-         "Engine/Core.cppm"
-         "Engine/Scene.cppm"
-         "Engine/SceneManager.cppm"
-         "Engine/TermManager.cppm"
-         "Graphics/Box.cppm"
-         "Graphics/Color.cppm"
-         "Graphics/Colorable.cppm"
-         "Graphics/Drawable.cppm"
-         "Graphics/Element.cppm"
-         "Graphics/MaxSize.cppm"
-         "Graphics/MinSize.cppm"
-         "Graphics/Positionable.cppm"
-         "Graphics/Sizable.cppm"
-         "System/Events.cppm"
-         "System/Point2.cppm"
-         "System/Time.cppm"
-         "System/Unicode.cppm"
-  PRIVATE "Engine/Core.cpp"
-          "Graphics/Box.cpp"
-          "Graphics/Color.cpp"
-          "Graphics/Colorable.cpp"
-          "Graphics/Element.cpp"
-          "Graphics/MaxSize.cpp"
-          "Graphics/MinSize.cpp"
-          "Graphics/Positionable.cpp")
+target_sources(${PROJECT_NAME} PUBLIC FILE_SET CXX_MODULES FILES
+                                      "libyunpa.cppm")
+add_subdirectory("Engine")
+add_subdirectory("Graphics")
+add_subdirectory("System")

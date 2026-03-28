@@ -2,41 +2,41 @@ module;
 #include <memory>
 export module libyunpa:Scene;
 import :Drawable;
+import :Events;
+import :Point2;
 import :Time;
 
 namespace libyunpa {
 export class Scene;
 export using ScenePtr = std::shared_ptr<Scene>;
 
-export class Scene : public Drawable {
+export class Scene : public IDrawable {
 private:
   ScenePtr _parent;
+  Point2u _mousePosition{.x = 1, .y = 1};
   bool _wantsExit{false};
+  bool _hasFocus{false};
 
 protected:
-  auto request_exit() {
-    _wantsExit = true;
-  }
+  void request_exit();
+  [[nodiscard]]
+  bool has_focus() const;
+  [[nodiscard]]
+  Point2u mouse_position() const;
 
 public:
-  Scene(ScenePtr parent = nullptr) : _parent(std::move(parent)) {}
-
-  virtual ~Scene() = default;
-
+  Scene(ScenePtr parent = nullptr);
+  ~Scene() override = default;
   [[nodiscard]]
-  auto parent() const {
-    return _parent;
-  }
-
+  ScenePtr parent() const;
   [[nodiscard]]
-  auto wants_exit() const {
-    return _wantsExit;
-  }
-
-  virtual void on_bury() {}
-
-  virtual void on_reveal() {}
-
+  bool wants_exit() const;
+  virtual void on_bury();
+  virtual void on_reveal();
   virtual void update(const GameTime &gameTime) = 0;
+  virtual void handle_event(const libyunpa::Event &event);
+  virtual void handle_event(const libyunpa::Events::KeyEvent &event) = 0;
+  virtual void handle_event(const libyunpa::Events::FocusEvent &event);
+  virtual void handle_event(const libyunpa::Events::MouseEvent &event);
 };
 } // namespace libyunpa

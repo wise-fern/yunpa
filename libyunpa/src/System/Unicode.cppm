@@ -5,8 +5,9 @@ export module libyunpa:Unicode;
 namespace libyunpa {
 using namespace std::string_literals;
 
-namespace Chars {
-namespace Box {
+// NOLINTBEGIN(bugprone-throwing-static-initialization)
+
+namespace Chars::Box {
 const auto HORIZONTAL{"─"s};
 const auto VERTICAL{"│"s};
 
@@ -24,6 +25,7 @@ const auto LL{"└"s};
 const auto LR{"┘"s};
 
 } // namespace Sharp
-} // namespace Box
-} // namespace Chars
+} // namespace Chars::Box
+
+// NOLINTEND(bugprone-throwing-static-initialization)
 } // namespace libyunpa

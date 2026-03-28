@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"clangd.arguments": [
+			"--experimental-modules-support",
+			"--header-insertion=never",
+			"--pch-storage=memory"
+		],
+		"github-actions.workflows.pinned.workflows": [
+			".github/workflows/build.yaml"
+		]
+	}
+}

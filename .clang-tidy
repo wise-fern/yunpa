@@ -1,0 +1,34 @@
+---
+Checks:
+  - 'bugprone-*'
+  - 'cppcoreguidelines-*'
+  - 'concurrency-*'
+  - 'misc-*'
+  - 'modernize-*'
+  - 'performance-*'
+  - 'portability-*'
+  - 'readability-*'
+  - '-bugprone-easily-swappable-parameters'
+  - '-misc-use-internal-linkage'
+  - '-modernize-use-trailing-return-type'
+  - '-readability-identifier-length'
+WarningsAsErrors: '*'
+HeaderFileExtensions:
+  - ''
+  - h
+  - hh
+  - hpp
+  - hxx
+ImplementationFileExtensions:
+  - c
+  - cc
+  - cpp
+  - cxx
+HeaderFilterRegex: '.*'
+ExcludeHeaderFilterRegex: ''
+FormatStyle:     none
+CheckOptions:    {
+  cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor: true
+}
+SystemHeaders:   false
+...

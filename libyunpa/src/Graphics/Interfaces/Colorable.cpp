@@ -2,33 +2,36 @@ module;
 #include <string>
 #include <string_view>
 module libyunpa;
+import :Colorable;
 
 namespace libyunpa {
-std::string Colorable::apply(std::string_view text) {
-  return _color.apply(_bgColor.apply(text, true));
-}
+Colorable::~Colorable() = default;
 
 Colorable::Colorable(Color color, Color bgColor)
     : _color(color), _bgColor(bgColor) {}
 
 Colorable::Colorable(const Options &options)
-    : _color(options.color), _bgColor(options.bgColor) {}
+    : Colorable(options.color, options.bgColor) {}
+
+std::string Colorable::apply(std::string_view text) {
+  return _bgColor.apply(_color.apply(text), true);
+}
 
 void Colorable::color(Color color) {
   _color = color;
+  update();
 }
 
 Color Colorable::color() const {
   return _color;
 }
 
-void Colorable::bgColor(Color color) {
+void Colorable::bg_color(Color color) {
   _bgColor = color;
+  update();
 }
 
-Color Colorable::bgColor() const {
+Color Colorable::bg_color() const {
   return _bgColor;
 }
-
-Colorable::~Colorable() = default;
 } // namespace libyunpa

@@ -7,27 +7,28 @@ import :Drawable;
 import :Point2;
 
 namespace libyunpa {
-export class Node : public virtual Drawable {
+// NOLINTNEXTLINE(misc-include-cleaner)
+export class Node : public virtual IDrawable {
 private:
   std::string _output;
+  // NOLINTNEXTLINE(misc-include-cleaner)
   Point2u _size;
 
 protected:
   void output(std::string_view output);
-  virtual void calculate_output() = 0;
   void size(Point2u size);
-  void width(unsigned int width);
   void height(unsigned int height);
+  void width(unsigned int width);
 
 public:
-  virtual ~Node() = 0;
-  void draw() const override;
-  [[nodiscard]]
-  Point2u size() const;
+  virtual void update() = 0;
+  void draw() const final;
   [[nodiscard]]
   unsigned int height() const;
   [[nodiscard]]
   unsigned int width() const;
+  [[nodiscard]]
+  Point2u size() const;
 };
 
 export using Element = std::shared_ptr<Node>;

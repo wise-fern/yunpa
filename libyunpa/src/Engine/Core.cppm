@@ -1,6 +1,7 @@
 module;
 #include <memory>
 export module libyunpa:Core;
+import :Point2;
 import :Scene;
 
 namespace libyunpa {
@@ -12,12 +13,16 @@ private:
 
 public:
   Core() = delete;
+  ~Core() = default;
   Core(Core &) = delete;
   Core(Core &&) = delete;
+  Core &operator=(const Core &) = delete;
+  Core &operator=(Core &&) = delete;
 
   static void Init();
   static void Run();
   static void SetNextScene(ScenePtr scene);
   static ScenePtr GetCurrentScene();
+  static Point2u GetSize();
 };
 } // namespace libyunpa

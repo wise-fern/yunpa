@@ -26,3 +26,8 @@ repos:
     hooks:
       - id: clang-format
         exclude_types: [json]
+  # - repo: https://github.com/pocc/pre-commit-hooks
+    # rev: v1.3.5
+    # hooks:
+      # - id: clang-tidy
+        # args: [-p=build]

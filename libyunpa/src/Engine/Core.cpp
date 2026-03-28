@@ -1,6 +1,12 @@
 module;
 #include <cassert>
 #include <memory>
+#ifdef WIN32
+#include <windows.h>
+#else
+#include <sys/ioctl.h>
+#include <unistd.h>
+#endif
 module libyunpa;
 
 namespace libyunpa {
@@ -8,6 +14,7 @@ class Core::impl final {
 private:
   GameTime _gameTime;
   SceneManager _sceneMan;
+  EventManager _eventMan;
 
   auto game_loop() {
     while (true) {
@@ -16,21 +23,52 @@ private:
       if (_sceneMan.empty()) {
         return;
       }
+      while (const auto event{_eventMan.poll_event()}) {
+        _sceneMan.handle_event(event.value());
+      }
+      _sceneMan.draw();
     }
   }
 
 public:
   auto run() {
+    _eventMan.start();
     _gameTime.reset();
     game_loop();
+    _eventMan.stop();
   }
 
   auto set_next_scene(ScenePtr scene) {
     _sceneMan.set_next_scene(std::move(scene));
   }
 
+  [[nodiscard]]
   auto get_current_scene() const {
     return _sceneMan.get_current_scene();
+  }
+
+  [[nodiscard]]
+  // NOLINTNEXTLINE(readability-convert-member-functions-to-static)
+  auto get_size() const {
+    Point2u size;
+#ifdef WIN32
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    size.x =
+        static_cast<unsigned int>(csbi.srWindow.Right - csbi.srWindow.Left + 1);
+    size.y =
+        static_cast<unsigned int>(csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
+
+#else
+    winsize w{};
+    const int status = ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    if (w.ws_col == 0 or w.ws_row == 0 or status < 0) {
+      throw std::runtime_error{"Terminal size is wrong!"};
+    }
+    size.x = w.ws_col;
+    size.y = w.ws_row;
+#endif
+    return size;
   }
 };
 
@@ -58,5 +96,10 @@ void Core::SetNextScene(ScenePtr scene) {
 ScenePtr Core::GetCurrentScene() {
   assert(_initialized);
   return _instance->get_current_scene();
+}
+
+Point2u Core::GetSize() {
+  assert(_initialized);
+  return _instance->get_size();
 }
 } // namespace libyunpa

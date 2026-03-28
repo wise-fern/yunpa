@@ -1,6 +1,7 @@
 module;
 #include <iostream>
 module libyunpa;
+import :Element;
 
 namespace libyunpa {
 void Node::draw() const {
@@ -15,16 +16,12 @@ void Node::size(Point2u size) {
   _size = size;
 }
 
-void Node::width(unsigned int width) {
-  _size.x = width;
-}
-
 void Node::height(unsigned int height) {
   _size.y = height;
 }
 
-Point2u Node::size() const {
-  return _size;
+void Node::width(unsigned int width) {
+  _size.x = width;
 }
 
 unsigned int Node::height() const {
@@ -35,5 +32,7 @@ unsigned int Node::width() const {
   return _size.x;
 }
 
-Node::~Node() = default;
+Point2u Node::size() const {
+  return _size;
+}
 } // namespace libyunpa
