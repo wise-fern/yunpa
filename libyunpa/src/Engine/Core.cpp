@@ -23,6 +23,7 @@ private:
       if (_sceneMan.empty()) {
         return;
       }
+      _eventMan.update();
       while (const auto event{_eventMan.poll_event()}) {
         _sceneMan.handle_event(event.value());
       }
@@ -32,10 +33,8 @@ private:
 
 public:
   auto run() {
-    _eventMan.start();
     _gameTime.reset();
     game_loop();
-    _eventMan.stop();
   }
 
   auto set_next_scene(ScenePtr scene) {
