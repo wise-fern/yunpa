@@ -1,11 +1,8 @@
 module;
-#include <atomic>
 #include <functional>
-#include <mutex>
 #include <optional>
 #include <queue>
 #include <tao/pegtl.hpp>
-#include <thread>
 
 #ifdef WIN32
 #include <conio.h>
@@ -235,48 +232,22 @@ EventManager::EventManager() {
   DECRST(DecMode::SHOW_CURSOR);
 }
 
-void EventManager::event_loop() {
-  while (_running.test()) {
-    std::string working_string;
-    while (_kbhit() not_eq 0) {
-#ifndef WIN32
-      auto input{std::cin.get()};
-#else
-      auto input{_getch()};
-#endif
-      working_string += static_cast<char>(input);
-      auto parser_input = tao::pegtl::memory_input(working_string, "");
-      if (tao::pegtl::parse<Grammar::Language, Action>(parser_input,
-                                                       [&](Event event) {
-                                                         enqueue_event(event);
-                                                       })) {
-        working_string.clear();
-      }
+void EventManager::update() {
+  std::string working_string;
+  while (_kbhit() not_eq 0) {
+    auto input{_getch()};
+    working_string += static_cast<char>(input);
+    tao::pegtl::memory_input parser_input{working_string, ""};
+    auto callback = [&](Event event) {
+      _eventQueue.push(event);
+    };
+    if (tao::pegtl::parse<Grammar::Language, Action>(parser_input, callback)) {
+      working_string.clear();
     }
   }
 }
 
-void EventManager::enqueue_event(Event event) {
-  std::lock_guard lock(_queueMutex);
-  _eventQueue.push(event);
-}
-
-void EventManager::start() {
-  _running.test_and_set();
-  _running.notify_all();
-  _monitor = std::thread(&EventManager::event_loop, this);
-}
-
-void EventManager::stop() {
-  _running.clear();
-  _running.notify_all();
-  if (_monitor.joinable()) {
-    _monitor.join();
-  }
-}
-
 std::optional<Event> EventManager::poll_event() {
-  std::lock_guard lock(_queueMutex);
   if (_eventQueue.empty()) {
     return {};
   }
