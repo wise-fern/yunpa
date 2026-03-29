@@ -29,6 +29,8 @@ public:
   unsigned int width() const;
   [[nodiscard]]
   Point2u size() const;
+  [[nodiscard]]
+  std::string output() const;
 };
 
 export using Element = std::shared_ptr<Node>;

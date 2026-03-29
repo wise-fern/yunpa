@@ -24,6 +24,10 @@ void Node::width(unsigned int width) {
   _size.x = width;
 }
 
+std::string Node::output() const {
+  return _output;
+}
+
 unsigned int Node::height() const {
   return _size.y;
 }
