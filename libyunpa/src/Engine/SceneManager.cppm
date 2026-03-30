@@ -1,13 +1,12 @@
 module;
 #include <stack>
 export module libyunpa:SceneManager;
-import :Drawable;
 import :Events;
 import :Scene;
 import :Time;
 
 namespace libyunpa {
-export class SceneManager : public IDrawable {
+export class SceneManager {
 private:
   ScenePtr _nextScene;
   std::stack<ScenePtr> _scenes;
@@ -19,7 +18,7 @@ private:
 public:
   SceneManager() = default;
   void update(const GameTime &gameTime);
-  void draw() const override;
+  void draw() const;
   void set_next_scene(ScenePtr scene);
   void handle_event(const Event &event);
   [[nodiscard]]
