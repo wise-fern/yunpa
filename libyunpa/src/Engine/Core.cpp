@@ -15,6 +15,7 @@ private:
   GameTime _gameTime;
   SceneManager _sceneMan;
   EventManager _eventMan;
+  ftxui::Screen _screen{ftxui::Screen::Create(ftxui::Dimension::Full())};
 
   auto game_loop() {
     while (true) {
@@ -26,7 +27,8 @@ private:
       while (const auto event{_eventMan.poll_event()}) {
         _sceneMan.handle_event(event.value());
       }
-      _sceneMan.draw();
+      _screen.Clear();
+      _sceneMan.draw(_screen);
     }
   }
 

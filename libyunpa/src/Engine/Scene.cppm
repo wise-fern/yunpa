@@ -4,6 +4,7 @@ export module libyunpa:Scene;
 import :Events;
 import :Point2;
 import :Time;
+import ftxui;
 
 namespace libyunpa {
 export class Scene;
@@ -32,7 +33,8 @@ public:
   bool wants_exit() const;
   virtual void on_bury();
   virtual void on_reveal();
-  virtual void draw() const = 0;
+  [[nodiscard]]
+  virtual ftxui::Element draw() const = 0;
   virtual void update(const GameTime &gameTime) = 0;
   virtual void handle_event(const libyunpa::Event &event);
   virtual void handle_event(const libyunpa::Events::KeyEvent &event) = 0;

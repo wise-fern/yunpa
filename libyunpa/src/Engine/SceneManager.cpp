@@ -4,15 +4,6 @@ module libyunpa;
 import :SceneManager;
 
 namespace libyunpa {
-// NOLINTNEXTLINE(misc-no-recursion)
-void SceneManager::draw(const ScenePtr &scene) const {
-  if (scene == nullptr) {
-    return;
-  }
-  draw(scene->parent());
-  scene->draw();
-}
-
 void SceneManager::pop_scene() {
   if (_scenes.empty()) {
     return;
@@ -48,11 +39,22 @@ void SceneManager::update(const GameTime &gameTime) {
   _scenes.top()->update(gameTime);
 }
 
-void SceneManager::draw() const {
-  if (_scenes.empty()) {
+// NOLINTNEXTLINE(misc-no-recursion)
+void SceneManager::draw_parents(ftxui::Screen &screen,
+                                const ScenePtr &scene) const {
+  if (scene == nullptr) {
     return;
   }
-  draw(_scenes.top());
+  draw_parents(screen, scene->parent());
+  ftxui::Render(screen, scene->draw());
+}
+
+void SceneManager::draw(ftxui::Screen &screen) const {
+  if (_scenes.empty()) {
+    ftxui::Render(screen, ftxui::text("No Scenes") | ftxui::center);
+    return;
+  }
+  draw_parents(screen, _scenes.top());
 }
 
 void SceneManager::set_next_scene(ScenePtr scene) {
