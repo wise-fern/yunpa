@@ -220,16 +220,14 @@ template <> struct Action<Grammar::FocusEvent> {
 namespace libyunpa {
 EventManager::EventManager() {
 #ifdef WIN32
-  auto *handle{GetStdHandle(STD_INPUT_HANDLE)};
   DWORD mode = (ENABLE_PROCESSED_INPUT bitor ENABLE_WINDOW_INPUT bitor
                 ENABLE_MOUSE_INPUT bitor ENABLE_EXTENDED_FLAGS bitor
                 ENABLE_VIRTUAL_TERMINAL_INPUT) bitand
                compl(ENABLE_QUICK_EDIT_MODE bitor ENABLE_ECHO_INPUT);
-  SetConsoleMode(handle, mode);
+  SetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), mode);
   mode = (ENABLE_PROCESSED_OUTPUT bitor DISABLE_NEWLINE_AUTO_RETURN bitor
           ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-  handle = GetStdHandle(STD_OUTPUT_HANDLE);
-  SetConsoleMode(handle, mode);
+  SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), mode);
 #endif
   DECSET(DecMode::WIN32_INPUT_MODE);
   DECRST(DecMode::SHOW_CURSOR);
