@@ -14,6 +14,7 @@ FetchContent_Declare(
   GIT_TAG 3.2.8
   GIT_SHALLOW ON
   SYSTEM EXCLUDE_FROM_ALL OVERRIDE_FIND_PACKAGE)
+set(FTXUI_BUILD_MODULES YES)
 FetchContent_Declare(
   ftxui
   GIT_REPOSITORY https://github.com/ArthurSonzogni/FTXUI.git
