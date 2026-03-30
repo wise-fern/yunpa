@@ -1,6 +1,8 @@
 module;
 #include <cassert>
+#include <iostream>
 #include <memory>
+
 #ifdef WIN32
 #include <windows.h>
 #else
@@ -29,6 +31,7 @@ private:
       }
       _screen.Clear();
       _sceneMan.draw(_screen);
+      std::cout << _screen.ToString();
     }
   }
 
