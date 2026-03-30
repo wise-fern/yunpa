@@ -5,7 +5,9 @@ module YoungPastry;
 namespace YoungPastry::Scenes {
 void Title::update(const libyunpa::GameTime &gameTime) {}
 
-void Title::draw() const {}
+ftxui::Element Title::draw() const {
+  return ftxui::text("Young Pastry") | ftxui::center;
+}
 
 template <class... Ts> struct Overload : Ts... {
   using Ts::operator()...;
