@@ -1,5 +1,8 @@
 export module libyunpa;
 
+// Re-exported modules
+export import ftxui;
+
 // Engine partitions
 export import :Core;
 export import :EventManager;

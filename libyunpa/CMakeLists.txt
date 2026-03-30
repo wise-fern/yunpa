@@ -12,7 +12,7 @@ else()
 endif()
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" FOLDER
                                                            ${PROJECT_NAME})
-target_link_libraries(${PROJECT_NAME} PRIVATE pegtl)
+target_link_libraries(${PROJECT_NAME} PRIVATE pegtl PUBLIC ftxui::modules)
 if(NOT MSVC)
   target_compile_options(
     ${PROJECT_NAME}
