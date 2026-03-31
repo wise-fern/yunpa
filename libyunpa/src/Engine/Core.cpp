@@ -31,7 +31,7 @@ private:
       }
       _screen.Clear();
       _sceneMan.draw(_screen);
-      std::cout << _screen.ToString();
+      std::cout << "\x1b[1;1H" + _screen.ToString();
     }
   }
 
