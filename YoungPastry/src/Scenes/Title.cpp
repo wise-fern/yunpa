@@ -13,7 +13,10 @@ ftxui::Element Title::draw() const {
            ftxui::color(ftxui::Color::DeepPink2)};
   auto search{ftxui::text("The Search for a Magical Pet") | ftxui::center |
               ftxui::color(ftxui::Color::DeepPink3)};
-  auto text{ftxui::vbox({youngpastry, in_, search}) | ftxui::center};
+  auto text{
+      ftxui::vbox({youngpastry, in_, search}) |
+      ftxui::borderStyled(ftxui::BorderStyle::DOUBLE, ftxui::Color::GrayDark) |
+      ftxui::center};
   auto spacer{ftxui::emptyElement() |
               ftxui::size(ftxui::HEIGHT, ftxui::EQUAL, SPACER_HEIGHT)};
   auto layout{ftxui::vbox({spacer, text})};
